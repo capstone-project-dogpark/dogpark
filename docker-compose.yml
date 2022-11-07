@@ -22,8 +22,9 @@ services:
       - ./project.env
     command: --default-authentication-plugin=mysql_native_password
     volumes:
-      - compose-lesson:/var/lib/mysql
+      - sql:/var/lib/postgresql/data/
     ports:
-      - 33006:3306
+      - 54321:5432
 volumes:
-  compose-lesson:
+  sql:
+    driver: local

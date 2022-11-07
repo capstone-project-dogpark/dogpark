@@ -1,3 +1,3 @@
-FROM mysql
+FROM postgres:alpine
 #Make sure to update this to match your project.
 COPY project.sql /docker-entrypoint-initdb.d/
