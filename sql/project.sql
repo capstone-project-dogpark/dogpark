@@ -45,28 +45,27 @@ CREATE TABLE post (
     -- and finally create the primary key
                        PRIMARY KEY(tweetId)
 );
--- create the tweetImage entity
+
 CREATE TABLE follow (
-                       imageId BINARY(16) NOT NULL,
-                       imageTweetId BINARY(16) NOT NULL,
-                       imageCloudinaryToken VARCHAR(255) NOT NULL,
-                       imageUrl VARCHAR(128) NOT NULL ,
-                       INDEX(imageId),
-                       INDEX(imageTweetId),
-                       FOREIGN KEY(imageTweetId) REFERENCES tweet(tweetId),
-                       PRIMARY KEY (imageId)
+                       followApproved NOT NULL,
+                       followDate DATE NOT NULL,
+                       followDenied NOT NULL,
+                       followProfileId NOT NULL ,
+                       followerProfileId NOT NULL,
 );
--- create the like entity (a weak entity from an m-to-n for profile --> tweet)
+
 CREATE TABLE comment (
-    -- these are not auto_increment because they're still foreign keys
-                        likeTweetId BINARY(16) NOT NULL,
-                        likeProfileId BINARY(16) NOT NULL,
-                        likeDate DATETIME(6) NOT NULL,	-- index the foreign keys
+
+                        commendId PRIMARY KEY NOT NULL,
+                        commentPostId FOREIGN KEY NOT NULL,
+                        commentProfileId FOREIGN KEY NOT NULL,
+                        commentDate TIMESTAMP WITH TIME ZONE NOT NULL,
+                        commentText NOT NULL,
                         INDEX(likeProfileId),
                         INDEX(likeTweetId),
     -- create the foreign key relations
-                        FOREIGN KEY(likeTweetId) REFERENCES tweet(tweetId),
-                        FOREIGN KEY(likeProfileId) REFERENCES profile(profileId),
+                        FOREIGN KEY(commentPostId) REFERENCES post(postId),
+                        FOREIGN KEY(commentProfileId) REFERENCES profile(profileId),
     -- finally, create a composite foreign key with the two foreign keys
                         PRIMARY KEY(likeProfileId, likeTweetId)
 );
