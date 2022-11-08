@@ -91,10 +91,10 @@ CREATE TABLE park (
         likeProfileId BINARY (16) NOT NULL,
         likeDate DATETIME(6) NOT NULL, -- index the foreign keys
         INDEX(likeProfileId) ,
-                        INDEX(likeTweetId),
+        INDEX(likeTweetId),
     -- create the foreign key relations
-                        FOREIGN KEY(likeTweetId) REFERENCES tweet(tweetId),
-                        FOREIGN KEY(likeProfileId) REFERENCES profile(profileId),
+        FOREIGN KEY(likeTweetId) REFERENCES tweet(tweetId),
+        FOREIGN KEY(likeProfileId) REFERENCES profile(profileId),
     -- finally, create a composite foreign key with the two foreign keys
-                        PRIMARY KEY(likeProfileId, likeTweetId)
+        PRIMARY KEY(likeProfileId, likeTweetId)
         );
