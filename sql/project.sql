@@ -47,23 +47,27 @@ CREATE TABLE post (
 );
 
 CREATE TABLE follow (
-                       follow_Approved NOT NULL,
-                       follow_Date TIMESTAMP WITH TIME ZONE NOT NULL,
-                       follow_Denied NOT NULL,
-                       follow_Profile_Id NOT NULL ,
-                       follower_Profile_Id NOT NULL,
+                       followApproved NOT NULL,
+                       followDate DATE NOT NULL,
+                       followDenied NOT NULL,
+                       followProfileId NOT NULL ,
+                       followerProfileId NOT NULL,
 );
 
 CREATE TABLE comment (
 
-                        commend_Id PRIMARY KEY NOT NULL,
-                        comment_Post_Id FOREIGN KEY NOT NULL,
-                        comment_Profile_Id FOREIGN KEY NOT NULL,
-                        comment_Date TIMESTAMP WITH TIME ZONE NOT NULL,
-                        comment_Text NOT NULL,
-                        FOREIGN KEY(comment_Post_Id) REFERENCES post(post_Id),
-                        FOREIGN KEY(comment_Profile_Id) REFERENCES profile(profile_Id),
-                        PRIMARY KEY(comment_Post_Id, comment_Profile_Id)
+                        commendId PRIMARY KEY NOT NULL,
+                        commentPostId FOREIGN KEY NOT NULL,
+                        commentProfileId FOREIGN KEY NOT NULL,
+                        commentDate TIMESTAMP WITH TIME ZONE NOT NULL,
+                        commentText NOT NULL,
+                        INDEX(likeProfileId),
+                        INDEX(likeTweetId),
+    -- create the foreign key relations
+                        FOREIGN KEY(commentPostId) REFERENCES post(postId),
+                        FOREIGN KEY(commentProfileId) REFERENCES profile(profileId),
+    -- finally, create a composite foreign key with the two foreign keys
+                        PRIMARY KEY(likeProfileId, likeTweetId)
 );
 
 CREATE TABLE park (
@@ -87,10 +91,10 @@ CREATE TABLE park (
         likeProfileId BINARY (16) NOT NULL,
         likeDate DATETIME(6) NOT NULL, -- index the foreign keys
         INDEX(likeProfileId) ,
-                        INDEX(likeTweetId),
+        INDEX(likeTweetId),
     -- create the foreign key relations
-                        FOREIGN KEY(likeTweetId) REFERENCES tweet(tweetId),
-                        FOREIGN KEY(likeProfileId) REFERENCES profile(profileId),
+        FOREIGN KEY(likeTweetId) REFERENCES tweet(tweetId),
+        FOREIGN KEY(likeProfileId) REFERENCES profile(profileId),
     -- finally, create a composite foreign key with the two foreign keys
-                        PRIMARY KEY(likeProfileId, likeTweetId)
+        PRIMARY KEY(likeProfileId, likeTweetId)
         );
