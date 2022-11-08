@@ -47,27 +47,23 @@ CREATE TABLE post (
 );
 
 CREATE TABLE follow (
-                       followApproved NOT NULL,
-                       followDate DATE NOT NULL,
-                       followDenied NOT NULL,
-                       followProfileId NOT NULL ,
-                       followerProfileId NOT NULL,
+                       follow_Approved NOT NULL,
+                       follow_Date TIMESTAMP WITH TIME ZONE NOT NULL,
+                       follow_Denied NOT NULL,
+                       follow_Profile_Id NOT NULL ,
+                       follower_Profile_Id NOT NULL,
 );
 
 CREATE TABLE comment (
 
-                        commendId PRIMARY KEY NOT NULL,
-                        commentPostId FOREIGN KEY NOT NULL,
-                        commentProfileId FOREIGN KEY NOT NULL,
-                        commentDate TIMESTAMP WITH TIME ZONE NOT NULL,
-                        commentText NOT NULL,
-                        INDEX(likeProfileId),
-                        INDEX(likeTweetId),
-    -- create the foreign key relations
-                        FOREIGN KEY(commentPostId) REFERENCES post(postId),
-                        FOREIGN KEY(commentProfileId) REFERENCES profile(profileId),
-    -- finally, create a composite foreign key with the two foreign keys
-                        PRIMARY KEY(likeProfileId, likeTweetId)
+                        commend_Id PRIMARY KEY NOT NULL,
+                        comment_Post_Id FOREIGN KEY NOT NULL,
+                        comment_Profile_Id FOREIGN KEY NOT NULL,
+                        comment_Date TIMESTAMP WITH TIME ZONE NOT NULL,
+                        comment_Text NOT NULL,
+                        FOREIGN KEY(comment_Post_Id) REFERENCES post(post_Id),
+                        FOREIGN KEY(comment_Profile_Id) REFERENCES profile(profile_Id),
+                        PRIMARY KEY(comment_Post_Id, comment_Profile_Id)
 );
 
 CREATE TABLE park (
