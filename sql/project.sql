@@ -29,22 +29,22 @@ CREATE TABLE profile (
 -- create the tweet entity
 CREATE TABLE post (
     -- this is for yet another primary key...
-                        post_id BINARY(22) NOT NULL,
+                        post_id VARCHAR(22) NOT NULL,
     -- this is for a foreign key; auto_incremented is omitted by design
-                        post_park_id BINARY(16) NOT NULL,
+                        post_park_id VARCHAR(16) NOT NULL,
                         post_profile_id VARCHAR(140) NOT NULL,
                         post_caption VARCHAR,
-                        post_date DATE,
-                        post_image_url ,
-    -- notice dates don't need a size parameter
+                        post_date DATE NOT NULL,
+                        post_image_url NOT NULL,
 
-    -- this creates an index before making a foreign key
-                       INDEX(post_park_id),
-    -- this creates the actual foreign key relation
-                       FOREIGN KEY(post_park_id) REFERENCES profile(profileId),
-    -- and finally create the primary key
-                       PRIMARY KEY(tweetId)
+                       FOREIGN KEY(post_park_id) REFERENCES (park_id),
+                       FOREIGN KEY(park_profile_id) REFERENCES (profile_id),
+
+                       PRIMARY KEY(post_id)
+
 );
+
+CREATE INDEX ON post (post_park_id);
 
 CREATE TABLE follow (
                        followApproved NOT NULL,
