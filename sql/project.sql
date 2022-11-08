@@ -13,35 +13,35 @@ CREATE TABLE profile (
     -- this creates the attribute for the primary key
     -- auto_increment tells mySQL to number them {1, 2, 3, ...}
     -- not null means the attribute is required!
-                         profile_id uuid NOT NULL,
+                         profile_id uuid NOT NULL PRIMARY KEY,
                          profile_about_pet VARCHAR(275)NULL,
                          profile_activation_token CHAR(32) NOT NULL,
-                         profile_Email VARCHAR(64) NOT NULL UNIQUE ,
-                         profile_at_handle VARCHAR(32) NOT NULL UNIQUE,
-                         profile_avatar_url  VARCHAR(255),
-    -- to make sure duplicate data cannot exist, create a unique index
-
+                         profile_email VARCHAR(64) NOT NULL UNIQUE ,
+                         profile_at_handle VARCHAR(48) NOT NULL UNIQUE,
     -- to make something optional, exclude the not null
-                         profileHash CHAR(97) NOT NULL,
-                         profilePhone VARCHAR(32),
-                         UNIQUE(profileEmail),
-                         UNIQUE(profileAtHandle),
+                         profile_hash CHAR(97) NOT NULL,
+                         profile_image VARCHAR(32) NULL,
+                         UNIQUE(profile_email),
+                         UNIQUE(profile_at_handle),
     -- this officiates the primary key for the entity
-                         PRIMARY KEY(profileId)
+                         PRIMARY KEY(profile_id)
 );
 -- create the tweet entity
 CREATE TABLE post (
     -- this is for yet another primary key...
-                       tweetId BINARY(16) NOT NULL,
+                        post_id BINARY(22) NOT NULL,
     -- this is for a foreign key; auto_incremented is omitted by design
-                       tweetProfileId BINARY(16) NOT NULL,
-                       tweetContent VARCHAR(140) NOT NULL,
+                        post_park_id BINARY(16) NOT NULL,
+                        post_profile_id VARCHAR(140) NOT NULL,
+                        post_caption VARCHAR,
+                        post_date DATE,
+                        post_image_url ,
     -- notice dates don't need a size parameter
-                       tweetDate DATETIME(6) NOT NULL,
+
     -- this creates an index before making a foreign key
-                       INDEX(tweetProfileId),
+                       INDEX(post_park_id),
     -- this creates the actual foreign key relation
-                       FOREIGN KEY(tweetProfileId) REFERENCES profile(profileId),
+                       FOREIGN KEY(post_park_id) REFERENCES profile(profileId),
     -- and finally create the primary key
                        PRIMARY KEY(tweetId)
 );
