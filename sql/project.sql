@@ -5,7 +5,7 @@
 -- do this on live data!!!!
 DROP TABLE IF EXISTS profile;
 DROP TABLE IF EXISTS post;
-DROP TABLE IF EXISTS like;
+DROP TABLE IF EXISTS "like";
 DROP TABLE IF EXISTS comment;
 DROP TABLE IF EXISTS park;
 
@@ -13,14 +13,14 @@ CREATE TABLE profile (
     -- this creates the attribute for the primary key
     -- auto_increment tells mySQL to number them {1, 2, 3, ...}
     -- not null means the attribute is required!
-                         profile_id uuid NOT NULL PRIMARY KEY,
+                         profile_id uuid NOT NULL,
                          profile_about_pet VARCHAR(275)NULL,
-                         profile_activation_token CHAR(32) NOT NULL,
+                         profile_activation_token CHAR(32) NULL,
                          profile_email VARCHAR(64) NOT NULL UNIQUE ,
                          profile_at_handle VARCHAR(48) NOT NULL UNIQUE,
     -- to make something optional, exclude the not null
                          profile_hash CHAR(97) NOT NULL,
-                         profile_image VARCHAR(32) NULL,
+                         profile_image VARCHAR(255) NULL,
                          UNIQUE(profile_email),
                          UNIQUE(profile_at_handle),
     -- this officiates the primary key for the entity
@@ -85,7 +85,7 @@ CREATE TABLE park (
                         PRIMARY KEY(likeProfileId, likeTweetId)
     );
 
-    CREATE TABLE like (
+    CREATE TABLE "like" (
         -- these are not auto_increment because they're still foreign keys
         likeTweetId BINARY (16) NOT NULL,
         likeProfileId BINARY (16) NOT NULL,
