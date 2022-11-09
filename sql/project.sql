@@ -29,22 +29,22 @@ CREATE TABLE profile (
 -- create the tweet entity
 CREATE TABLE post (
     -- this is for yet another primary key...
-                        post_id BINARY(22) NOT NULL,
+                        post_id VARCHAR(22) NOT NULL,
     -- this is for a foreign key; auto_incremented is omitted by design
-                        post_park_id BINARY(16) NOT NULL,
+                        post_park_id VARCHAR(16) NOT NULL,
                         post_profile_id VARCHAR(140) NOT NULL,
                         post_caption VARCHAR,
-                        post_date DATE,
-                        post_image_url ,
-    -- notice dates don't need a size parameter
+                        post_date DATE NOT NULL,
+                        post_image_url NOT NULL,
 
-    -- this creates an index before making a foreign key
-                       INDEX(post_park_id),
-    -- this creates the actual foreign key relation
-                       FOREIGN KEY(post_park_id) REFERENCES profile(profileId),
-    -- and finally create the primary key
-                       PRIMARY KEY(tweetId)
+                       FOREIGN KEY(post_park_id) REFERENCES (park_id),
+                       FOREIGN KEY(park_profile_id) REFERENCES (profile_id),
+
+                       PRIMARY KEY(post_id)
+
 );
+
+CREATE INDEX ON post (post_park_id);
 
 CREATE TABLE follow (
                        followApproved NOT NULL,
@@ -71,30 +71,32 @@ CREATE TABLE comment (
 );
 
 CREATE TABLE park (
-    -- these are not auto_increment because they're still foreign keys
-    likeTweetId BINARY (16) NOT NULL,
-    likeProfileId BINARY (16) NOT NULL,
-    likeDate DATETIME(6) NOT NULL, -- index the foreign keys
-    INDEX(likeProfileId
+
+    parkId PRIMARY KEY NOT NULL,
+    parkAddress NOT NULL,
+    parkLat NOT NULL,
+    ParkLng Not Null
+    ParkName NAME Not NULL
+    INDEX(likeProfileId)
 ),
-                        INDEX(likeTweetId),
+    INDEX(likeTweetId),
     -- create the foreign key relations
-                        FOREIGN KEY(likeTweetId) REFERENCES tweet(tweetId),
-                        FOREIGN KEY(likeProfileId) REFERENCES profile(profileId),
+    FOREIGN KEY(likeTweetId) REFERENCES tweet(tweetId),
+    FOREIGN KEY(likeProfileId) REFERENCES profile(profileId),
     -- finally, create a composite foreign key with the two foreign keys
-                        PRIMARY KEY(likeProfileId, likeTweetId)
+     PRIMARY KEY(likeProfileId, likeTweetId)
     );
 
     CREATE TABLE "like" (
         -- these are not auto_increment because they're still foreign keys
-        likeTweetId BINARY (16) NOT NULL,
-        likeProfileId BINARY (16) NOT NULL,
+        likeProfileId FOREIGN KEY NOT NULL,
+        likePost FOREIGN KEY NOT NULL,
         likeDate DATETIME(6) NOT NULL, -- index the foreign keys
         INDEX(likeProfileId) ,
         INDEX(likeTweetId),
     -- create the foreign key relations
-        FOREIGN KEY(likeTweetId) REFERENCES tweet(tweetId),
-        FOREIGN KEY(likeProfileId) REFERENCES profile(profileId),
+        FOREIGN KEY(likePost) REFERENCES post(post_id),
+        FOREIGN KEY(likeProfileId) REFERENCES profile(profile_id) ,
     -- finally, create a composite foreign key with the two foreign keys
         PRIMARY KEY(likeProfileId, likeTweetId)
         );
