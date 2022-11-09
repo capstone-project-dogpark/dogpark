@@ -3,7 +3,6 @@ import Mailgun from "mailgun.js";
 import formData from 'form-data'
 import {setActivationToken, setHash} from "../../utils/auth.utils";
 import {insertProfile, Profile} from "../../utils/models/Profile";
-
 export async function signUpController(request:Request, response:Response) {
     try {
         const mailGun = new Mailgun(formData)

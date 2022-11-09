@@ -72,31 +72,23 @@ CREATE TABLE comment (
 
 CREATE TABLE park (
 
-    parkId PRIMARY KEY NOT NULL,
-    parkAddress NOT NULL,
-    parkLat NOT NULL,
-    ParkLng Not Null
-    ParkName NAME Not NULL
-    INDEX(likeProfileId)
-),
-    INDEX(likeTweetId),
-    -- create the foreign key relations
-    FOREIGN KEY(likeTweetId) REFERENCES tweet(tweetId),
-    FOREIGN KEY(likeProfileId) REFERENCES profile(profileId),
-    -- finally, create a composite foreign key with the two foreign keys
-     PRIMARY KEY(likeProfileId, likeTweetId)
-    );
+    park_id PRIMARY KEY NOT NULL,
+    park_address NOT NULL,
+    park_lat NOT NULL,
+    Park_lng NOT NULL,
+    park_name NOT NULL
+);
 
-    CREATE TABLE "like" (
+
+
+    CREATE TABLE like (
         -- these are not auto_increment because they're still foreign keys
-        likeProfileId FOREIGN KEY NOT NULL,
-        likePost FOREIGN KEY NOT NULL,
-        likeDate DATETIME(6) NOT NULL, -- index the foreign keys
-        INDEX(likeProfileId) ,
-        INDEX(likeTweetId),
+        like_profile_id FOREIGN KEY NOT NULL,
+        like_post FOREIGN KEY NOT NULL,
+        like_date TIMESTAMP WITH TIME ZONE NOT NULL,
+        INDEX (like_profile_id),
     -- create the foreign key relations
-        FOREIGN KEY(likePost) REFERENCES post(post_id),
-        FOREIGN KEY(likeProfileId) REFERENCES profile(profile_id) ,
+        FOREIGN KEY(like_post) REFERENCES post(post_id),
+        FOREIGN KEY(like_profile_id) REFERENCES profile(profile_id),
     -- finally, create a composite foreign key with the two foreign keys
-        PRIMARY KEY(likeProfileId, likeTweetId)
         );
