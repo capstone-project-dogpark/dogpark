@@ -47,16 +47,16 @@ CREATE TABLE post (
 CREATE INDEX ON post (post_park_id);
 
 CREATE TABLE follow (
-                       followApproved NOT NULL,
-                       followDate DATE NOT NULL,
-                       followDenied NOT NULL,
-                       followProfileId NOT NULL ,
-                       followerProfileId NOT NULL,
+                       follow_Approved NOT NULL,
+                       follow_Date DATE NOT NULL,
+                       follow_Denied NOT NULL,
+                       follow_ProfileId NOT NULL ,
+                       follower_ProfileId NOT NULL,
 );
 
 CREATE TABLE comment (
 
-                        commendId PRIMARY KEY NOT NULL,
+                        commend_Id PRIMARY KEY NOT NULL,
                         commentPostId FOREIGN KEY NOT NULL,
                         commentProfileId FOREIGN KEY NOT NULL,
                         commentDate TIMESTAMP WITH TIME ZONE NOT NULL,
