@@ -3,7 +3,7 @@ import {Schema} from "express-validator";
 export const signInValidator: Schema = {
     profilePassword: {
         isLength: {
-            errorMessage: 'Password must be at lease eight characters',
+            errorMessage: 'Password must be at least eight characters',
             options: {min: 8, max: 200}
         },
         trim: true,

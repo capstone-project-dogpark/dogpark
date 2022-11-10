@@ -19,10 +19,9 @@ export const signUpValidator: Schema = {
         escape: true,
         trim: true,
         isLength: {
-            errorMessage: 'profile handle must be between 0 to 48 characters',
-            options: {min: 1, max: 48}
+            errorMessage: 'profile handle must be between seven to thirty-two characters',
+            options: {min: 7, max: 32}
         },
-
     },
     profileEmail: {
         isEmail: {
