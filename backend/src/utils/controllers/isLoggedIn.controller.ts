@@ -46,4 +46,4 @@ return result as boolean
 if(isJwtValid(unverifiedJwtToken) && isSessionsActive(sessionProfile(request))) {
     return next()
 }
-isJwtValid(unverifiedJwtToken) && isSessionsActive(sessionProfile(request)) ? next() : response.json(status)
+isJwtValid(unverifiedJwtToken) && isSessionsActive(sessionProfile(request)) ? next() : response.json(status)}
