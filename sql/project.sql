@@ -39,8 +39,7 @@ CREATE TABLE post (
 
                        FOREIGN KEY(post_park_id) REFERENCES (park_id),
                        FOREIGN KEY(park_profile_id) REFERENCES (profile_id),
-
-                       PRIMARY KEY(post_id)
+                       PRIMARY KEY(post_id);
 
 );
 

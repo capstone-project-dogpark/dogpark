@@ -14,27 +14,20 @@ export const profileValidator: Schema = {
             options: {min: 7, max: 32}
         }
     },
-    profileAboutPet: {
+    profileEmail: {
+        isEmail: {
+            errorMessage: 'Please provide a valid email'
+        },
+        trim: true
+    },
+    profileImage: {
         optional: {
             options: {
                 nullable: true
             }
         },
-        profileEmail: {
-            isEmail: {
-                errorMessage: 'Please provide a valid email'
-            },
-            trim: true
-        },
-        profileImage: {
-            optional: {
-                options: {
-                    nullable: true
-                }
-            },
-            isURL: {
-                errorMessage: 'profile image is malformed please upload a new image'
-            }
+        isURL: {
+            errorMessage: 'Profile image is malformed please upload a new image'
         }
     }
 }
