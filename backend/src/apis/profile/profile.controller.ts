@@ -3,7 +3,7 @@ import {
     PartialProfile,
     Profile,
     selectPartialProfileByProfileId,
-    selectWhoProfileByProfileId,
+    selectWholeProfileByProfileId,
     updateProfile
 } from '../../utils/models/Profile'
 import { Status } from '../../utils/interfaces/Status'
