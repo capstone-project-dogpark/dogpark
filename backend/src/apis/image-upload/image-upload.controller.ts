@@ -1,7 +1,7 @@
 import {Request, Response} from 'express'
 import {upLoadToCloudinary} from '../../utils/cloudinary.utils'
 
-export async function ImageUploadController (request: Request, response: Response): Promise<Response> {
+export async function imageUploadController (request: Request, response: Response): Promise<Response> {
     try {
         if (request.file === undefined) {
             throw new Error ('Please provide a valid file type')
