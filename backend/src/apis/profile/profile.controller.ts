@@ -3,17 +3,16 @@ import {
     PartialProfile,
     Profile,
     selectPartialProfileByProfileId,
-    selectWhoProfileByProfileId,
+    selectWholeProfileByProfileId,
     updateProfile
 } from '../../utils/models/Profile'
-import { Status } from '../../utils/interfaces/Status'
+import { Status } from '../../utils/interfaces/status'
 
 export async function putProfileController (request: Request, response: Response): Promise<Response> {
     try {
         const { profileId } = request.params
-        const { profileEmail , profileAvatarUrl, profileAtHandle } = request.body
-        const profilePhone = request.body.profilePhone ?? null
-        const profile = request.sessions.profile as Profile
+        const { profileEmail , profileImage, profileAtHandle } = request.body
+        const profile = request.session.profile as Profile
         const profileIdFromSession = profile.profileId as string
 
         const preformUpdate = async (partialProfile: PartialProfile): Promise<Response> => {
@@ -28,7 +27,7 @@ export async function putProfileController (request: Request, response: Response
         }
 
         return profileId === profileIdFromSession
-        ? await preformUpdate({ profileId, profileAtHandle, profileAboutPet, profileEmail, profileImage})
+        ? await preformUpdate({ profileId, profileAtHandle, profileEmail, profileImage,})
             : updateFailed('you are not allowed to preform this action')
     } catch (error: any) {
         return response.json({ status: 400, data: null, message: error.message})
@@ -40,7 +39,7 @@ export async function getProfileByProfileId (request: Request, response: Respons
         const { profileId } = request.params
         const mySqlResult = await selectPartialProfileByProfileId(profileId)
         const data = mySqlResult ?? null
-        const status: Status = {status: 200, data, message: mull }
+        const status: Status = {status: 200, data, message: null }
         return response.json(status)
     } catch (error: any) {
         return (response.json({ status: 400, data: null, message: error.message }))
