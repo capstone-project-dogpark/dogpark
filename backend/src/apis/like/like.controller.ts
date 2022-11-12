@@ -1,4 +1,4 @@
-import {NextFunction, request, Request, response, Response} from "express"
+import {NextFunction, Request, Response} from 'express'
 import { Status } from '../../utils/interfaces/status'
 import { Profile } from '../../utils/models/Profile'
 import { deleteLike, insertLike, Like, selectLikeByLikeId, selectLikesByLikePostId } from '../../utils/models/like'
