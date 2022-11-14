@@ -58,7 +58,7 @@ export async function postPost (request: Request, response: Response): Promise<R
         const profile: Profile = request.session.profile as Profile
         const postProfileId: string = profile.profileId as string
 
-        const post: Post = {
+        const post = {
             postId: null,
             postProfileId,
             postCaption,
