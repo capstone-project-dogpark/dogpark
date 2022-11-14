@@ -7,8 +7,8 @@ export const postValidator: Schema = {
         }
     },
     postContent: {
-        isLength {
-            errorMessage: 'A post cannot be longeer than 252 characters',
+        isLength: {
+            errorMessage: 'A post cannot be longer than 252 characters',
             options: { max: 252 }
         },
         trim: true,
