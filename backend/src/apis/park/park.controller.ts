@@ -38,19 +38,5 @@ export async function getParkByParkProfileIdController (request: Request, respon
     }
 }
 
-export async function getParkbyParkIdController (request: Request, response:Response, nextFunction: NextFunction) promise: Promise<Response<Status>> {
-    try {
-        const {parkId} = request.params
-        const data = await selectParksByParkId(parkId)
-        return response.json({status: 200, message: null, data})
-} catch (error) {
-    return response.json({
-        status: 500,
-        message: '',
-        data: []
-    })
-    }
-}
-
 
 
