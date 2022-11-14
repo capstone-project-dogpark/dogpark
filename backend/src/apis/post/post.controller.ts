@@ -9,7 +9,7 @@ import {
 import { Status } from '../../utils/interfaces/Status'
 import {Profile, selectWholeProfileByProfileId} from '../../utils/models/Profile'
 
-export async function getAllPostController (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
+export async function getAllPostsController (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
     try {
         const data = await selectAllPosts ()
         const status: Status = { status: 200, message: null, data }
@@ -52,7 +52,7 @@ export async function getPostByPostIdController (request: Request, response: Res
     }
 }
 
-export async function postPost (request: Request, response: Response): Promise<Response<status>> {
+export async function postPost (request: Request, response: Response): Promise<Response<Status>> {
     try {
         const {postCaption} = request.body
         const profile: Profile = request.session.profile as Profile
