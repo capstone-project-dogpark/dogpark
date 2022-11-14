@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from 'express'
-import {Status} from "../../utils/interfaces/status";
+import {Status} from "../../utils/interfaces/Status";
 import {
     insertPark,
     selectAllPark,

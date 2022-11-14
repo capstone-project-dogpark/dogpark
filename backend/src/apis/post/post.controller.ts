@@ -6,7 +6,7 @@ import {
     selectPostByPostProfileId,
     Post
 } from '../../utils/models/Post'
-import { Status } from '../../utils/interfaces/status'
+import { Status } from '../../utils/interfaces/Status'
 import {Profile, selectWholeProfileByProfileId} from '../../utils/models/Profile'
 
 export async function getAllPostController (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
