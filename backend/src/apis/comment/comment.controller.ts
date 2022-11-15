@@ -1,13 +1,13 @@
-import {Request, Response NextFunction} from "express";
+import {Request, Response, NextFunction} from "express";
 import {
-    insertComment
-    selectAllComments
-    selectCommentByCommentId
-    selectCommentByCommentProfileId
-    comment
+    insertComment,
+    selectAllComments,
+    selectCommentByCommentId,
+    selectCommentByCommentProfileId,
+    Comment
 } from "../../utils/models/comment";
 import { Status } from '../../utils/interfaces/Status'
-import {Profile, selectWholeCommentByCommentId} from '../../utils/models/comment'
+import {Profile} from '../../utils/models/Profile'
 
 export async function getAllCommentsController (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
     try {
@@ -25,7 +25,7 @@ export async function getAllCommentsController (request: Request, response: Resp
     }
 
 
-export async function getCommentByCommentIdController (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
+export async function getCommentByCommentProfileIdController (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
     try {
         const {commentProfileId} = request.params
         const data = await selectCommentByCommentId (commentProfileId)
