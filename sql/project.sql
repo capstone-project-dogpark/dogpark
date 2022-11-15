@@ -4,10 +4,10 @@
 -- never ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever
 -- do this on live data!!!!
 DROP TABLE IF EXISTS "like";
-DROP TABLE IF EXISTS park;
-DROP TABLE IF EXISTS comment;
 DROP TABLE IF EXISTS follow;
+DROP TABLE IF EXISTS comment;
 DROP TABLE IF EXISTS post;
+DROP TABLE IF EXISTS park;
 DROP TABLE IF EXISTS profile;
 DROP FUNCTION IF EXISTS haversine;
 
@@ -28,7 +28,7 @@ CREATE TABLE profile (
     -- this officiates the primary key for the entity
                          PRIMARY KEY(profile_id)
 );
--- create the tweet entity
+
 
 CREATE TABLE park (
 
@@ -66,7 +66,7 @@ CREATE TABLE follow (
 );
 
 CREATE TABLE comment (
-                        commend_id uuid PRIMARY KEY NOT NULL,
+                        comment_id uuid PRIMARY KEY NOT NULL,
                         comment_post_id uuid NOT NULL,
                         comment_profile_id uuid NOT NULL,
                         comment_date TIMESTAMP WITH TIME ZONE NOT NULL,

@@ -8,8 +8,8 @@ export interface Comment {
     commentDate: Date | null
 }
 
-export async function insertComment(Comment: {comment: Comment}): Promise<string> {
-    const {commentProfileId, commentText} = Comment
+export async function insertComment(comment: Comment): Promise<string> {
+    const {commentProfileId, commentText} = comment
     await sql `INSERT INTO comment (comment_id, comment_post_id, comment_profile_id, comment_text, comment_date) VALUES(gen_random_uuid(), ${commentProfileId}, ${commentText}, NOW())`
     return 'Comment created successfully'
 }

@@ -2,7 +2,7 @@ import { Router } from 'express'
 import {
     getAllCommentsController,
     getCommentByCommentIdController,
-    commentComment
+    postCommentController
 } from "./comment.controller";
 import {asyncValidatorController} from "../../utils/controllers/async-validator.controller"
 import { check, checkSchema} from "express-validator"
@@ -20,6 +20,6 @@ CommentRouter.route('/commentProfiledId/:commentProfileId').get(asyncValidatorCo
 
 CommentRouter.route('/')
 .get(getAllCommentsController)
-.post(isLoggedIn, asyncValidatorController(checkSchema((commentValidator))), commentComment)
+.post(isLoggedIn, asyncValidatorController(checkSchema((commentValidator))), postCommentController)
 
 export default Router

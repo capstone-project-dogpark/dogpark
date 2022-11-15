@@ -54,15 +54,18 @@ export async function getCommentByCommentIdController (request: Request, respons
     }
 }
 
-export async function commentComment (request: Request, response: Response): Promise<Response<Status>> {
+export async function postCommentController (request: Request, response: Response): Promise<Response<Status>> {
     try {
+        const {commentText, commentPostId} = request.body
         const profile: Profile = request.session.profile as Profile
         const commentProfileId: string = profile.profileId as string
 
-        const comment = {
+        const comment:Comment = {
             commentId: null,
             commentProfileId,
-            commentDate: null
+            commentDate: null,
+            commentText,
+            commentPostId
         }
         const result = await insertComment(comment)
         const status: Status = {

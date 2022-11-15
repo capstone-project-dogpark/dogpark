@@ -15,6 +15,14 @@ export async function insertPark(park: Park): Promise<string> {
 
 
 
-export async function getParkByDistance(userLong:number, userLat:number, distance:number):Promise<Park[]> {
-    return sql<Park[]>`SELECT parkId, parkAddress, parkLat, parkLng, parkName FROM park WHERE haversine(${})`
+export async function selectParksByDistance(userLng: string, userLat: string, distance: string):Promise<Park[]> {
+    return sql<Park[]>`SELECT park_id, park_address, park_lat, park_lng, park_name FROM park WHERE haversine(${userLng}, ${userLat}, park_lng, park_lat) < ${distance}`
+}
+
+export async function selectAllParks():Promise<Park[]> {
+    return sql<Park[]>`SELECT park_id, park_address, park_lat, park_lng, park_name FROM park`
+}
+
+export async function selectParkByParkId(parkId: string):Promise<Park[]> {
+    return sql<Park[]>`SELECT park_id, park_address, park_lat, park_lng, park_name FROM park WHERE park_id = ${parkId}`
 }
