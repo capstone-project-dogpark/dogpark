@@ -31,7 +31,7 @@ export async function toggleFollowController (request: Request, response: Respon
         const followerProfileId = profile.followerProfileId as string
 
         const follow: Follow = {
-            followerProfileId,
+            followProfileId,
             followerProfileId,
             followDate: null
         }
