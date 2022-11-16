@@ -15,14 +15,18 @@ export async function  insertFollow (follow: Follow): Promise<string> {
 }
 
 export async function deleteFollow(follow: Follow): Promise<string> {
-    const {followerProfileId, followProfileId} = follow
-    await sql `DELETE FROM follow WHERE follower_profile_id = ${followerProfileId} AND follow_profile_id = ${followProfileId}`
+    const {followProfileId, followerProfileId} = follow
+    await sql `DELETE FROM follow WHERE follow_profile_id = ${followProfileId} AND follower_profile_id = ${followerProfileId}`
     return 'Unfollow Successful'
 }
 
-export async function selectFollowByFollowProfileId
+export async function selectFollowByFollowProfileId (follow: Follow): Promise<Follow|null> {
+    const {followProfileId, followerProfileId} = follow
+    const result = <Follow[]> await sql `SELECT follow_profile_id, follower_profile_id, follow_date FROM follow WHERE follow_profile_id = ${followProfileId} AND follower_profile_id = ${followerProfileId}`
+    return result?.length === 1 ? result [0] : null
+}
 
-export async function selectFollowsByFollowProfileId (followProfileId: string): Promise<Follow[]> {
+export async function selectFollowsByFollowerProfileId (followProfileId: string): Promise<Follow[]> {
     return <Follow[]> await sql `SELECT follow_profile_id, follower_profile_id, follow_date FROM follow WHERE follow_profile_id = ${followProfileId}`
 }
 
