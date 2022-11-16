@@ -9,7 +9,7 @@ import { check, checkSchema } from 'express-validator'
 import { isLoggedIn } from '../../utils/controllers/isLoggedIn.controller'
 import { postValidator } from './post.validator'
 
-const PostRoute = Router()
+export const PostRoute = Router()
 PostRoute.route('/:PostId').get(asyncValidatorController([
     check('postId', 'please provide a valid postId').isUUID()
 ]), getPostByPostIdController)
@@ -21,5 +21,3 @@ PostRoute.route('/postProfileId/:postProfileId').get(asyncValidatorController([
 PostRoute.route('/')
 .get(getAllPostsController)
 .post(isLoggedIn, asyncValidatorController(checkSchema((postValidator))) , postPost)
-
-export default route

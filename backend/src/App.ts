@@ -1,16 +1,17 @@
 import express, { Application } from 'express'
 import morgan from 'morgan'
-// Routes
 import { indexRoute } from './apis/index.route'
 import session from 'express-session'
 import { createClient } from 'redis'
 import RedisConnect from 'connect-redis'
 import {signUpRoute} from "./apis/sign-up/sign-up.route";
-import {signInController} from "./apis/sign-in/sign-in.controller";
 import {SignInRouter} from "./apis/sign-in/sign-in.route";
 import {ProfileRoute} from "./apis/profile/profile.route";
 import {SignOutRoute} from "./apis/sign-out/sign-out.route";
 import PostRoute from "./apis/post/post.route";
+import {CommentRouter} from "./apis/comment/comment.route";
+import {parkRouter} from "./apis/park/park.route";
+import {followRouter} from "./apis/follow/follow-route";
 const redisClient = createClient({ legacyMode: true, socket: { host: process.env.REDIS_HOST } })
 redisClient.connect().catch(console.error)
 const RedisStore = RedisConnect(session)
@@ -20,7 +21,7 @@ const RedisStore = RedisConnect(session)
 export class App {
     app: Application
 
-    constructor (
+    constructor(
         private readonly port?: number | string
     ) {
         this.app = express()
@@ -30,14 +31,14 @@ export class App {
     }
 
     // private method that sets the port for the sever, to one from index.route.ts, and external .env file or defaults to 3000
-    public settings (): void {
+    public settings(): void {
         this.app.set('port', this.port)
     }
 
     // private method to setting up the middleware to handle json responses, one for dev and one for prod
-    private middlewares (): void {
+    private middlewares(): void {
         const sessionConfig = {
-            store: new RedisStore({ client: redisClient, host: process.env.REDIS_HOST, port: 6379 }),
+            store: new RedisStore({client: redisClient, host: process.env.REDIS_HOST, port: 6379}),
             saveUninitialized: true,
             secret: process.env.SESSION_SECRET as string,
             resave: false
@@ -50,7 +51,7 @@ export class App {
     }
 
     // private method for setting up routes in their basic sense (ie. any route that performs an action on profiles starts with /profiles)
-    private routes (): void {
+    private routes(): void {
         this.app.use('/apis', indexRoute)
         this.app.use("/apis/sign-up", signUpRoute)
         this.app.use("/apis/sign-in", SignInRouter)
@@ -63,7 +64,7 @@ export class App {
     }
 
     // starts the server and tells the terminal to post a message that the server is running and on what port
-    public async listen (): Promise<void> {
+    public async listen(): Promise<void> {
         await this.app.listen(this.app.get('port'))
         console.log('Express application built successfully')
     }
