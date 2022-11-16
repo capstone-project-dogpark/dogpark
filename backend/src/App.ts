@@ -8,10 +8,10 @@ import {signUpRoute} from "./apis/sign-up/sign-up.route";
 import {SignInRouter} from "./apis/sign-in/sign-in.route";
 import {ProfileRoute} from "./apis/profile/profile.route";
 import {SignOutRoute} from "./apis/sign-out/sign-out.route";
-import PostRoute from "./apis/post/post.route";
 import {CommentRouter} from "./apis/comment/comment.route";
 import {parkRouter} from "./apis/park/park.route";
 import {followRouter} from "./apis/follow/follow-route";
+import {PostRoute} from "./apis/post/post.route";
 const redisClient = createClient({ legacyMode: true, socket: { host: process.env.REDIS_HOST } })
 redisClient.connect().catch(console.error)
 const RedisStore = RedisConnect(session)
