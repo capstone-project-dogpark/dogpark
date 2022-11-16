@@ -4,11 +4,12 @@
 -- never ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever ever
 -- do this on live data!!!!
 DROP TABLE IF EXISTS "like";
-DROP TABLE IF EXISTS park;
-DROP TABLE IF EXISTS comment;
 DROP TABLE IF EXISTS follow;
+DROP TABLE IF EXISTS comment;
 DROP TABLE IF EXISTS post;
+DROP TABLE IF EXISTS park;
 DROP TABLE IF EXISTS profile;
+DROP FUNCTION IF EXISTS haversine;
 
 CREATE TABLE profile (
     -- this creates the attribute for the primary key
@@ -27,7 +28,7 @@ CREATE TABLE profile (
     -- this officiates the primary key for the entity
                          PRIMARY KEY(profile_id)
 );
--- create the tweet entity
+
 
 CREATE TABLE park (
 
@@ -65,7 +66,7 @@ CREATE TABLE follow (
 );
 
 CREATE TABLE comment (
-                        commend_id uuid PRIMARY KEY NOT NULL,
+                        comment_id uuid PRIMARY KEY NOT NULL,
                         comment_post_id uuid NOT NULL,
                         comment_profile_id uuid NOT NULL,
                         comment_date TIMESTAMP WITH TIME ZONE NOT NULL,
@@ -89,3 +90,33 @@ CREATE INDEX ON comment (comment_profile_id);
 
 CREATE INDEX ON "like" (like_post_id);
 CREATE INDEX ON "like" (like_profile_id);
+
+create function haversine(originx double precision, originy double precision, destinationx double precision, destinationy double precision) returns double precision
+    language plpgsql
+as
+$$
+DECLARE
+    -- first,  all variables; I don't think you can declare later
+    radius         FLOAT;
+    latitudeAngle1 FLOAT;
+    latitudeAngle2 FLOAT;
+    latitudePhase  FLOAT;
+    longitudePhase FLOAT;
+    alpha          FLOAT;
+    corner         FLOAT;
+    distance       FLOAT;
+BEGIN
+    -- assign the variables that were declared & use them
+    radius := 3958.7613; -- radius of the earth in miles
+    latitudeAngle1 := RADIANS(originY);
+    latitudeAngle2 := RADIANS(destinationY);
+    latitudePhase := RADIANS(destinationY - originY);
+    longitudePhase := RADIANS(destinationX - originX);
+    alpha := POW(SIN(latitudePhase / 2), 2)
+        + POW(SIN(longitudePhase / 2), 2)
+                 * COS(latitudeAngle1) * COS(latitudeAngle2);
+    corner := 2 * ASIN(SQRT(alpha));
+    distance := radius * corner;
+    RETURN distance;
+END;
+$$;

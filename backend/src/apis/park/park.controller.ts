@@ -1,17 +1,16 @@
 import {NextFunction, Request, Response} from 'express'
 import {Status} from "../../utils/interfaces/Status";
 import {
-    insertPark,
-    selectAllPark,
-    selectParksByParkId,
-    selectParksByParkProfileId,
-    park} from "../../utils/models/park"
+    selectAllParks,
+    selectParkByParkId,
+    selectParksByDistance,
+} from "../../utils/models/Park"
 
 
 
-export async function getAllParkControllers(request: Request, response:Response): Promise<Response<Status>> {
+export async function getAllParksController (request: Request, response:Response): Promise<Response<Status>> {
     try{
-        const data = await selectAllPark()
+        const data = await selectAllParks()
         //return the response
         const status: Status = {status: 200, message: null, data }
         return response.json(status)
@@ -24,10 +23,10 @@ export async function getAllParkControllers(request: Request, response:Response)
     }
 }
 
-export async function getParkByParkProfileIdController (request: Request, response:Response, nextFunction: NextFunction): Promise<Response<Status>> {
+export async function getParkByParkIdController (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
     try {
-        const {parkProfileId} = request.params
-        const data = await selectParksByParkProfileId(parkProfileId)
+        const {parkId} = request.params
+        const data = await selectParkByParkId(parkId)
         return response.json({status: 200, message: null, data})
     } catch (error) {
         return response.json({
@@ -38,19 +37,18 @@ export async function getParkByParkProfileIdController (request: Request, respon
     }
 }
 
-export async function getParkbyParkIdController (request: Request, response:Response, nextFunction: NextFunction) promise: Promise<Response<Status>> {
+export async function getParksByDistance (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
     try {
-        const {parkId} = request.params
-        const data = await selectParksByParkId(parkId)
-        return response.json({status: 200, message: null, data})
-} catch (error) {
-    return response.json({
-        status: 500,
-        message: '',
-        data: []
-    })
+        const {userLng, userLat, distance} = request.params
+        const data = await selectParksByDistance(userLng, userLat, distance)
+        return response.json ({status: 200, message: null, data})
+    } catch (error) {
+        return response.json ({
+            status: 500,
+            message: '',
+            data: []
+        })
     }
 }
-
 
 
