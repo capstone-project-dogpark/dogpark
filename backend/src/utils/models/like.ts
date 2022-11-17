@@ -4,8 +4,8 @@ export interface Like {
     likeProfileId: string | null
     likePostId: string | null
     likeDate: Date | null
-}
 
+}
 export async function  insertLike (like: Like): Promise<string> {
     const {likeProfileId, likePostId} = like
     await sql `INSERT INTO "like" (like_profile_id, like_post_id, like_date) VALUES(${likeProfileId}, ${likePostId}, NOW())`
