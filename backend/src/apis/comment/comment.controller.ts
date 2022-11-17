@@ -67,7 +67,7 @@ export async function postCommentController (request: Request, response: Respons
             commentText,
             commentPostId
         }
-        const result = await insertComment(comment)
+        const result = await insertComment (comment)
         const status: Status = {
             status: 200,
             message: result,

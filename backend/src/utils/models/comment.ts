@@ -1,7 +1,7 @@
 import { sql } from '../database.utils'
 
 export interface Comment {
-    commentId: string
+    commentId: string|null
     commentPostId: string
     commentProfileId: string
     commentText: string
@@ -9,8 +9,9 @@ export interface Comment {
 }
 
 export async function insertComment(comment: Comment): Promise<string> {
+    console.log(comment)
     const {commentProfileId, commentPostId, commentText} = comment
-    await sql `INSERT INTO comment (comment_id, comment_post_id, comment_profile_id, comment_text, comment_date) VALUES (gen_random_uuid(), ${commentPostId} ${commentProfileId}, ${commentText}, NOW())`
+    await sql `INSERT INTO comment (comment_id, comment_post_id, comment_profile_id, comment_text, comment_date) VALUES (gen_random_uuid(), ${commentPostId}, ${commentProfileId}, ${commentText}, NOW())`
     return 'Comment created successfully'
 }
 
