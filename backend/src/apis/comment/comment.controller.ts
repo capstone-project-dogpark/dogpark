@@ -56,14 +56,14 @@ export async function getCommentByCommentIdController (request: Request, respons
 
 export async function postCommentController (request: Request, response: Response): Promise<Response<Status>> {
     try {
-        const {commentText, commentPostId} = request.body
+        const {commentId, commentDate, commentText, commentPostId} = request.body
         const profile: Profile = request.session.profile as Profile
         const commentProfileId: string = profile.profileId as string
 
         const comment:Comment = {
-            commentId: null,
+            commentId,
             commentProfileId,
-            commentDate: null,
+            commentDate,
             commentText,
             commentPostId
         }
