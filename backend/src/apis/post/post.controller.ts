@@ -54,15 +54,17 @@ export async function getPostByPostIdController (request: Request, response: Res
 
 export async function postPost (request: Request, response: Response): Promise<Response<Status>> {
     try {
-        const {postCaption} = request.body
+        const {postCaption, postParkId} = request.body
         const profile: Profile = request.session.profile as Profile
         const postProfileId: string = profile.profileId as string
 
-        const post = {
+        const post: Post = {
             postId: null,
+            postParkId,
             postProfileId,
             postCaption,
-            postDate: null
+            postDate: null,
+            postImageUrl: null
         }
         const result = await insertPost(post)
         const status: Status = {

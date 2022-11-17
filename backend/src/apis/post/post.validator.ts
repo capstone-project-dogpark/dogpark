@@ -6,7 +6,7 @@ export const postValidator: Schema = {
             errorMessage: 'Please provide a valid postProfileId'
         }
     },
-    postContent: {
+    postCaption: {
         isLength: {
             errorMessage: 'A post cannot be longer than 252 characters',
             options: { max: 252 }

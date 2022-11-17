@@ -2,16 +2,16 @@ import { sql } from '../database.utils'
 
 export interface Post {
     postId: string|null
-    postParkId: string|null
+    postParkId: string
     postProfileId: string
     postCaption: string
     postDate: Date|null
-    postImageUrl: string
+    postImageUrl: string|null
 }
 
-export async function insertPost(post: { postCaption: any; postProfileId: string; postDate: null; postId: null }): Promise<string> {
-    const {postProfileId, postCaption} = post
-    await sql `INSERT INTO post (post_id, post_park_id, post_profile_id, post_caption, post_date, post_image_url) VALUES (gen_random_uuid(), ${postProfileId}, ${postCaption}, NOW())`
+export async function insertPost(post: Post): Promise<string> {
+    const {postProfileId, postCaption, postParkId, postImageUrl} = post
+    await sql `INSERT INTO post (post_id, post_park_id, post_profile_id, post_caption, post_date, post_image_url) VALUES (gen_random_uuid(), ${postParkId}, ${postProfileId}, ${postCaption}, NOW(), ${postImageUrl})`
     return 'Post created successfully'
 }
 
