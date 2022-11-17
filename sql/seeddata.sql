@@ -1,2 +1,3 @@
 insert INTO PARK(park_id, park_address, park_lat, park_lng, park_name) VALUES (gen_random_uuid(), 'Oldtown', 35.1782, 106.5628, 'Dogpark');
 
+insert into profile(profile_id, profile_activation_token, profile_email, profile_at_handle, profile_hash) VALUES ('d0020b66-bcc9-4c22-8cf5-4a8c7b34acec', 'a0e1abb5422f6515b46de080ec762df4', 'celeste.rualizo@gmail.com', 'my handle', '$argon2id$v=19$m=65536,t=3,p=1$iPC5bsd+kBkuojvVsnQbcQ$nTVdhEtJsc8gxbjOFrq75bW5eJiorwWMw7stEtuD4bg')
