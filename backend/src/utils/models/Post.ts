@@ -10,6 +10,7 @@ export interface Post {
 }
 
 export async function insertPost(post: Post): Promise<string> {
+    console.log(insertPost)
     const {postParkId, postProfileId, postCaption, postImageUrl} = post
     await sql `INSERT INTO post (post_id, post_park_id, post_profile_id, post_caption, post_date, post_image_url) VALUES (gen_random_uuid(), ${postParkId}, ${postProfileId}, ${postCaption}, NOW(), ${postImageUrl})`
     return 'Post created successfully'
