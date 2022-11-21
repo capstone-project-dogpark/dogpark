@@ -9,7 +9,8 @@ export const likeRouter = Router()
 
 likeRouter.route('/')
     .post(isLoggedIn, toggleLikeController)
-likeRouter.route('likePostId/:likePostId')
+likeRouter.route('/likePostId/:likePostId')
     .get(asyncValidatorController([
-        check('likeTweetId', 'please provide a valid likePostId').isUUID()
+        check('likePostId', 'please provide a valid likePostId').isUUID()
     ]), getLikesByLikePostId)
+

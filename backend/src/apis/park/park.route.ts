@@ -5,7 +5,7 @@ import {getAllParksController, getParkByParkIdController} from "./park.controlle
 
 export const parkRouter = Router()
 parkRouter.route('/:parkId').get(asyncValidatorController([
-    check('/:parkId', 'please provide a valid parkId').isUUID()
+    check('parkId', 'Please provide a valid parkId').isUUID()
 ]), getParkByParkIdController)
 
 parkRouter.route('/')

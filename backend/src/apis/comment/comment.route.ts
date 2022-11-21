@@ -15,7 +15,7 @@ CommentRouter.route('commentId').get(asyncValidatorController([
 ]),getCommentByCommentIdController)
 
 CommentRouter.route('/commentProfiledId/:commentProfileId').get(asyncValidatorController([
-    check('commentId', 'please provide a valid commentId').isUUID()
+    check('commentProfileId', 'please provide a valid commentId').isUUID()
 ]),asyncValidatorController)
 
 CommentRouter.route('/')
