@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './App.css'
 import { Home } from './Home.jsx'
 import { FourOhFour } from './FourOhFour.jsx'
+import {Navbar} from "./Navbar.jsx";
 
 
 export function App() {
@@ -12,6 +13,7 @@ export function App() {
                 <Routes>
                     <Route  path='/' element={<Home />} />
                     <Route path={"*"} element={<FourOhFour />} />
+                    <Route path={"/Navbar"} element={<Navbar />} />
                 </Routes>
             </BrowserRouter>
         </>
