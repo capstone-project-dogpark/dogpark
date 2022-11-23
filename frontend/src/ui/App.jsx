@@ -7,7 +7,7 @@ import { FourOhFour } from './FourOhFour.jsx'
 import {Navigation} from "./components/Navbar.jsx";
 import {Route, BrowserRouter, Routes} from 'react-router-dom'
 import {SignUp} from './SignUp.jsx'
-
+import {WelcomePage} from "./WelcomePage.jsx";
 
 export function App() {
     return (
