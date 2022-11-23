@@ -7,6 +7,7 @@ import { FourOhFour } from './FourOhFour.jsx'
 import {Navigation} from "./components/Navbar.jsx";
 import {Route, BrowserRouter, Routes} from 'react-router-dom'
 import {SignUp} from './SignUp.jsx'
+import {Login} from "./Login.jsx";
 
 
 export function App() {
@@ -18,7 +19,7 @@ export function App() {
                     <Route  path='/' element={<Home />} />
                     <Route path={"*"} element={<FourOhFour />} />
                     <Route  path={"/SignUp"} element={<SignUp />} />
-                    <Route  path={"/SignUp"} element={<WelcomePage />} />
+                    <Route  path={"/Login"} element={<Login />} />
                 </Routes>
             </BrowserRouter>
         </>
