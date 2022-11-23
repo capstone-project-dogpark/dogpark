@@ -23,6 +23,7 @@ export function App() {
                     <Route  path={"/SignUp"} element={<SignUp />} />
                     <Route  path={"/Login"} element={<Login />} />
                     <Route path='MyFriendsPage' element={<MyFriendsPage />} />
+                    <Route  path={"/WelcomePage"} element={<WelcomePage />} />
                 </Routes>
             </BrowserRouter>
         </>
