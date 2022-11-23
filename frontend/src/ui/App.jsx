@@ -6,13 +6,9 @@ import './App.css'
 import { FourOhFour } from './FourOhFour.jsx'
 import {Navigation} from "./components/Navbar.jsx";
 import {Route, BrowserRouter, Routes} from 'react-router-dom'
-<<<<<<< HEAD
 import {SignUp} from './SignUp.jsx'
 import {Login} from "./Login.jsx";
-=======
 import {MyFriendsPage} from "./MyFriendsPage.jsx";
->>>>>>> my-friends-page
-
 
 export function App() {
     return (
@@ -22,12 +18,9 @@ export function App() {
                 <Routes>
                     <Route  path='/' element={<Home />} />
                     <Route path={"*"} element={<FourOhFour />} />
-<<<<<<< HEAD
                     <Route  path={"/SignUp"} element={<SignUp />} />
                     <Route  path={"/Login"} element={<Login />} />
-=======
                     <Route path='MyFriendsPage' element={<MyFriendsPage />} />
->>>>>>> my-friends-page
                 </Routes>
             </BrowserRouter>
         </>
