@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {Comment} from "./Comment.jsx";
 
-export function Profile() {
+export function ProfileCard() {
     return (
         <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src="holder.js/100px180" />

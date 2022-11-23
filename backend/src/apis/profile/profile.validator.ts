@@ -27,7 +27,7 @@ export const profileValidator: Schema = {
             }
         },
         isURL: {
-            errorMessage: 'Profile image is malformed please upload a new image'
+            errorMessage: 'ProfileCard image is malformed please upload a new image'
         }
     }
 }

@@ -47,5 +47,5 @@ export async function selectWholeProfileByProfileId(profileId: string): Promise<
 export async function updateProfile (profile: Profile): Promise<string> {
     const {profileId, profileActivationToken, profileAtHandle, profileEmail, profileHash, profileImage} = profile
     await sql `UPDATE profile SET profile_activation_token = ${profileActivationToken}, profile_at_handle = ${profileAtHandle}, profile_email = ${profileEmail}, profile_hash = ${profileHash}, profile_image = ${profileImage} WHERE profile_id = ${profileId}`
-    return 'Profile successfully updated'
+    return 'ProfileCard successfully updated'
 }
