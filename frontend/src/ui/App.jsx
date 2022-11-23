@@ -18,6 +18,7 @@ export function App() {
                     <Route  path='/' element={<Home />} />
                     <Route path={"*"} element={<FourOhFour />} />
                     <Route  path={"/SignUp"} element={<SignUp />} />
+                    <Route  path={"/SignUp"} element={<WelcomePage />} />
                 </Routes>
             </BrowserRouter>
         </>
