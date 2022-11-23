@@ -1,5 +1,5 @@
 import React from "react"
-import {Button, Col, Container, Row, Nav} from "react-bootstrap";
+import {Button, Col, Container, Row, Nav, Image} from "react-bootstrap";
 import {CommunityPost} from "./components/CommunityPost.jsx";
 import {Comment} from "./components/Comment.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -9,7 +9,7 @@ import {ProfileCard} from "./components/ProfileCard";
 export function Home() {
     return (
         <>
-            <Container className="text-center">
+            <Container className="text-center mb-5">
                 <Row>
                     <Col>
                         <h1>Dogs Best Friend</h1>
@@ -18,14 +18,14 @@ export function Home() {
                 </Row>
             </Container>
 
-            <Container className="text-center">
-                <Row>
-                    <Col>
+            <Container className="container-fluid py-5">
+                <Row className="Row gx-md-5 gy-5">
+                    <Col className="text-center" md="7">
                         <h2>Our Goal</h2>
                         <p>Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl. Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.</p>
                     </Col>
-                    <Col>
-                        <img className="rounded-circle mb-4" src="../assets/hannah-lim-U6nlG0Y5sfs-unsplash.jpg" alt="Dogs"/>
+                    <Col md="5">
+                        <Image fluid={true} className={"d-block mx-auto"} src={"https://www.placecage.com/gif/400/400"} alt={"place cage image"} />
                     </Col>
                 </Row>
 
