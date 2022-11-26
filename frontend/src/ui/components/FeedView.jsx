@@ -9,7 +9,7 @@ export function FeedView() {
         <>
             <Container>
             <Card style={{ width: '30rem' }}>
-                <Card.Img variant="top" src="https://www.placecage.com/500/500" />
+                <Card.Img variant="top" src="https://www.placecage.com/400/400" />
                 <Card.Body>
                     <Button size="sm">Like</Button>
                     <Card.Text>
