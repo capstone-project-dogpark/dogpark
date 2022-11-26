@@ -1,16 +1,18 @@
 import React from "react"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import {Container} from "react-bootstrap";
+import {Container, Row, Col} from "react-bootstrap";
 
 export function SignUp () {
     return (
         <>
-            <Container className="text-center">
+            <Container className="text-center mt-4">
                 <h1>Let's get started on your pet's profile!</h1>
             </Container>
 
-            <Form className="w-25 text-center">
+            <Container>
+                <Row className="justify-content-center">
+            <Form className="w-25">
                 <Form.Group className="mb-3" controlId="enterEmail">
                     <Form.Label></Form.Label>
                     <Form.Control type="email" placeholder="Enter email" />
@@ -33,8 +35,10 @@ export function SignUp () {
                     <Form.Label></Form.Label>
                     <Form.Control type="password" placeholder="Dog's Name" />
                 </Form.Group>
-                <Button variant="primary" type="submit">Submit</Button>
+                <Button type="submit">Submit</Button>
             </Form>
+                </Row>
+            </Container>
         </>
     )
 }
