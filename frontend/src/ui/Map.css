@@ -1,0 +1,14 @@
+.pinTop{
+    color: white;
+    position: absolute;
+    top: -10px;
+    left: 0PX;
+    TRANSFORM: translate(-50%, -100%);
+    text-align: center;
+    width: 200px;
+}
+
+
+.pinTop h3{
+    font-size: 18px;
+}

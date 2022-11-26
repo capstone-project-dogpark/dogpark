@@ -8,7 +8,6 @@ export function ProfileCard() {
     return (
         <Card style={{ width: '18rem' }}>
             <CardImg src='https://placedog.net/400' > </CardImg>
-            <CardImg className=
             <Card.Body>
                 <Card.Title>Pets Name</Card.Title>
             </Card.Body>
