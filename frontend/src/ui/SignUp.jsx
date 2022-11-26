@@ -12,31 +12,33 @@ export function SignUp () {
 
             <Container>
                 <Row className="justify-content-center">
+                    <Col className="col-8">
             <Form>
-                <Form.Group className="mb-3" controlId="enterEmail">
+                <Form.Group controlId="enterEmail">
                     <Form.Label></Form.Label>
                     <Form.Control type="email" placeholder="Enter email" />
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="createPassword">
+                <Form.Group controlId="createPassword">
                     <Form.Label></Form.Label>
                     <Form.Control type="email" placeholder="Create a password" />
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="confirmPassword">
+                <Form.Group controlId="confirmPassword">
                     <Form.Label></Form.Label>
                     <Form.Control type="email" placeholder="Confirm password" />
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="dogsName">
+                <Form.Group controlId="dogsName">
                     <Form.Label></Form.Label>
                     <Form.Control type="password" placeholder="Dog's Name" />
                 </Form.Group>
-                <Button type="submit">Submit</Button>
+                <Button className="mt-3" type="submit">Submit</Button>
             </Form>
+                    </Col>
                 </Row>
             </Container>
         </>
