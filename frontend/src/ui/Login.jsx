@@ -1,7 +1,7 @@
 import React from "react"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import {Container, Row} from "react-bootstrap";
+import {Container, Row, Col} from "react-bootstrap";
 
 export function Login () {
     return (
@@ -12,6 +12,7 @@ export function Login () {
 
             <Container>
                 <Row className="justify-content-center">
+                    <Col className="col-7">
             <Form className="text-center">
                 <Form.Group className="mb-3" controlId="email">
                     <Form.Label></Form.Label>
@@ -25,6 +26,7 @@ export function Login () {
                 </Form.Group>
                 <Button variant="primary" type="submit">Login</Button>
             </Form>
+                    </Col>
                 </Row>
             </Container>
 
