@@ -4,6 +4,7 @@ import {CommunityPost} from "./components/CommunityPost.jsx";
 import {Comment} from "./components/Comment.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {ProfileCard} from "./components/ProfileCard";
+import {FeedView} from "./components/FeedView.jsx";
 
 
 export function Home() {

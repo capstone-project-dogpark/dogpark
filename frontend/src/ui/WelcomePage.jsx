@@ -1,5 +1,6 @@
 import React from "react"
 import {Container, Image} from "react-bootstrap";
+import {FeedView} from "./components/FeedView.jsx";
 
 export function WelcomePage () {
     return (
@@ -11,6 +12,7 @@ export function WelcomePage () {
             <Container className="mt-5">
             <Image fluid={true} className={"rounded-circle"} src={"https://www.placecage.com/200/200"} alt={"place cage image"} />
             </Container>
+            <FeedView/>
 
 
         </>
