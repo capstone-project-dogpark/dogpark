@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Comment} from "./Comment.jsx";
 import Button from "react-bootstrap/Button";
 
+
 export function CommunityPost() {
     return (
         <Card style={{ width: '18rem' }}>

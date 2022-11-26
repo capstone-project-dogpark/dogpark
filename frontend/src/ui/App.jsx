@@ -12,6 +12,7 @@ import {Login} from "./Login.jsx";
 import {MyFriendsPage} from "./MyFriendsPage.jsx";
 import 'mapbox-gl/dist/mapbox-gl.css'
 import {DogParks} from './DogParks.jsx';
+import {CommunityPage} from "./CommunityPage.jsx";
 
 
 export function App() {
@@ -27,6 +28,7 @@ export function App() {
                     <Route path='MyFriendsPage' element={<MyFriendsPage />} />
                     <Route  path={"/WelcomePage"} element={<WelcomePage />} />
                     <Route  path={"/DogParks"} element={<DogParks />} />
+                    <Route  path={"/CommunityPage"} element={<CommunityPage />} />
                 </Routes>
             </BrowserRouter>
         </>
