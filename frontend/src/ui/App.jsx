@@ -9,6 +9,7 @@ import {Route, BrowserRouter, Routes} from 'react-router-dom'
 import {SignUp} from './SignUp.jsx'
 import {Login} from "./Login.jsx";
 import {MyFriendsPage} from "./MyFriendsPage.jsx";
+import {ProfileViewPage} from "./ProfileViewPage.jsx";
 
 export function App() {
     return (
@@ -16,11 +17,12 @@ export function App() {
             <BrowserRouter>
             <Navigation/>
                 <Routes>
-                    <Route  path='/' element={<Home />} />
+                    <Route path='/' element={<Home />} />
                     <Route path={"*"} element={<FourOhFour />} />
-                    <Route  path={"/SignUp"} element={<SignUp />} />
-                    <Route  path={"/Login"} element={<Login />} />
+                    <Route path={"/SignUp"} element={<SignUp />} />
+                    <Route path={"/Login"} element={<Login />} />
                     <Route path='MyFriendsPage' element={<MyFriendsPage />} />
+                    <Route path={'ProfileViewPage'} element={<ProfileViewPage />} />
                 </Routes>
             </BrowserRouter>
         </>
