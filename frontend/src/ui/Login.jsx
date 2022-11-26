@@ -12,7 +12,7 @@ export function Login () {
 
             <Container>
                 <Row className="justify-content-center">
-            <Form className="w-25 text-center">
+            <Form className="text-center">
                 <Form.Group className="mb-3" controlId="email">
                     <Form.Label></Form.Label>
                     <Form.Control type="email" placeholder="Email" />
