@@ -1,10 +1,17 @@
 import React from "react"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import {Container, Row} from "react-bootstrap";
 
 export function Login () {
     return (
         <>
+            <Container className="mt-4 text-center">
+                <h1>Please enter your login information</h1>
+            </Container>
+
+            <Container>
+                <Row className="justify-content-center">
             <Form className="w-25 text-center">
                 <Form.Group className="mb-3" controlId="email">
                     <Form.Label></Form.Label>
@@ -18,6 +25,8 @@ export function Login () {
                 </Form.Group>
                 <Button variant="primary" type="submit">Login</Button>
             </Form>
+                </Row>
+            </Container>
 
         </>
     )
