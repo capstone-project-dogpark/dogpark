@@ -12,7 +12,7 @@ export function SignUp () {
 
             <Container>
                 <Row className="justify-content-center">
-            <Form className="w-25">
+            <Form>
                 <Form.Group className="mb-3" controlId="enterEmail">
                     <Form.Label></Form.Label>
                     <Form.Control type="email" placeholder="Enter email" />
