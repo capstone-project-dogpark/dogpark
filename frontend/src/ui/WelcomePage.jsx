@@ -8,23 +8,14 @@ export function WelcomePage () {
         <>
             <Container className="text-center mt-5">
                 <h1>Welcome, Furball!</h1>
+                <Image fluid={true} className={"rounded-circle"} src={"https://www.placecage.com/100/100"} alt={"place cage image"} />
             </Container>
 
-
-            <Container className="mt-5">
-                <Row>
-                    <Col className="col-10 mb-5">
-            <Image fluid={true} className={"rounded-circle"} src={"https://www.placecage.com/200/200"} alt={"place cage image"} />
-                </Col>
-                    <Col className="col-2">
-                        <Button variant="primary">Create Post</Button>
-                    </Col>
-                    <Col>
-                        <FeedView/>
-                    </Col>
-            </Row>
+            <Container className="mt-2 text-center mb-5">
+                                <Button size="sm" variant="primary">Create Post</Button>
             </Container>
 
+            <FeedView/>
 
         </>
     )
