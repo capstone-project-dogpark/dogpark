@@ -13,10 +13,10 @@ export function WelcomePage () {
 
             <Container className="mt-5">
                 <Row>
-                    <Col className="">
+                    <Col className="col-10 mb-5">
             <Image fluid={true} className={"rounded-circle"} src={"https://www.placecage.com/200/200"} alt={"place cage image"} />
                 </Col>
-                    <Col>
+                    <Col className="col-2">
                         <Button variant="primary">Create Post</Button>
                     </Col>
                     <Col>
