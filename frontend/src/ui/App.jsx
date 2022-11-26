@@ -34,6 +34,7 @@ export function App() {
                     <Route  path={"/DogParks"} element={<DogParks />} />
                     <Route  path={"/CommunityPage"} element={<CommunityPage />} />
                 </Routes>
+                <FeedView/>
             </BrowserRouter>
         </>
     )

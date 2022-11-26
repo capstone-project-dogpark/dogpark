@@ -8,6 +8,7 @@ export function FeedView() {
     return (
         <>
             <Container>
+                <Row className="justify-content-center">
             <Card style={{ width: '30rem' }}>
                 <Card.Img variant="top" src="https://www.placecage.com/400/400" />
                 <Card.Body>
@@ -24,6 +25,7 @@ export function FeedView() {
                     </Form>
                 </Card.Body>
             </Card>
+                </Row>
             </Container>
         </>
     )
