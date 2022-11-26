@@ -11,7 +11,7 @@ export function WelcomePage () {
                 <Image fluid={true} className={"rounded-circle"} src={"https://www.placecage.com/100/100"} alt={"place cage image"} />
             </Container>
 
-            <Container className="mt-2 text-center mb-5">
+            <Container className="mt-3 text-center mb-5">
                                 <Button size="sm" variant="primary">Create Post</Button>
             </Container>
 
