@@ -14,6 +14,7 @@ export function Navigation() {
                             <Nav.Link href='/about'>The Community</Nav.Link>
                             <Nav.Link href='/SignUp'>Create a Pet Profile</Nav.Link>
                             <Nav.Link href='/Login'>Login</Nav.Link>
+                            <Nav.Link href='/DogParks'>Parks</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
