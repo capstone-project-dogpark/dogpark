@@ -13,6 +13,7 @@ import {MyFriendsPage} from "./MyFriendsPage.jsx";
 import 'mapbox-gl/dist/mapbox-gl.css'
 import {DogParks} from './DogParks.jsx';
 import {CommunityPage} from "./CommunityPage.jsx";
+import {FeedView} from "./components/FeedView";
 
 
 
@@ -35,3 +36,4 @@ export function App() {
         </>
     )
 }
+
