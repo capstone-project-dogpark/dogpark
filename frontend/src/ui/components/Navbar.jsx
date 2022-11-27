@@ -11,7 +11,7 @@ export function Navigation() {
                     <Navbar.Collapse id="basic-navbar-nar">
                         <Nav className="ms-auto">
                             <Nav.Link href='/'>Home</Nav.Link>
-                            <Nav.Link href='/about'>The Community</Nav.Link>
+                            <Nav.Link href='/CommunityPage'>The Community</Nav.Link>
                             <Nav.Link href='/SignUp'>Create a Pet Profile</Nav.Link>
                             <Nav.Link href='/DogParks'>Parks</Nav.Link>
                             <Nav.Link href='/Login'>Login</Nav.Link>

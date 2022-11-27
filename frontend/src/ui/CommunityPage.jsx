@@ -1,39 +1,31 @@
 import React from "react";
-import {Col, Container, Row} from "react-bootstrap";
 import {CommunityPost} from "./components/CommunityPost.jsx";
+import Card from "react-bootstrap/Card";
+import {CardImg} from "react-bootstrap";
+import {Comment} from "./components/Comment.jsx";
+
+
 
 export function CommunityPage() {
-    return(
-        <>
-            <Container className="text-center mt-5 mb-3" >
-                <Row className=" mt-5 mb-4">
-                    <h1>Community Page</h1>
-                    <Col>
+    return (
+        <Card style={{width: '18rem'}}>
+            <Card.Img variant="top" src="holder.js/100px180" />
+            <Card.Body>
+                <Card.Text>Caption</Card.Text>
+                <Comment/>
+            </Card.Body>
+            <Card.Img variant="top" src="holder.js/100px180" />
+            <Card.Body>
+                <Card.Text>Caption</Card.Text>
+                <Comment/>
+            </Card.Body>
+            <Card.Img variant="top" src="holder.js/100px180" />
+            <Card.Body>
+                <Card.Text>Caption</Card.Text>
+                <Comment/>
+            </Card.Body>
 
-                        <ProfileCard>className</ProfileCard>
-                    </Col>
-                    <Col>
-                        <ProfileCard>className</ProfileCard>
-                    </Col>
-                    <Col>
-                        <ProfileCard>className</ProfileCard>
-                    </Col>
-
-                    <Col>
-
-                        <ProfileCard>className</ProfileCard>
-                    </Col>
-                    <Col>
-                        <ProfileCard>className</ProfileCard>
-                    </Col>
-                    <Col>
-                        <ProfileCard>className</ProfileCard>
-                    </Col>
-                </Row>
-
-
-            </Container>
-
-        </>
-    )
+        </Card>
+    );
 }
+
