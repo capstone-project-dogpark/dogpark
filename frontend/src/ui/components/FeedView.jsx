@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import {Container, Row, Col} from "react-bootstrap";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export function FeedView() {
     return (
@@ -12,7 +13,7 @@ export function FeedView() {
             <Card style={{ width: '30rem' }}>
                 <Card.Img variant="top" src="https://www.placecage.com/400/400" />
                 <Card.Body>
-                    <Button size="sm">Like</Button>
+                    <Button size="sm"><FontAwesomeIcon icon="fa-heart" /></Button>
                     <Card.Text>
                         Caption for post here.
                     </Card.Text>
