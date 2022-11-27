@@ -18,6 +18,7 @@ import {FeedView} from "./components/FeedView";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
     faHeart,
+    faPlusCircle,
 } from "@fortawesome/free-solid-svg-icons";
 library.add(faHeart);
 

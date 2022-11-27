@@ -17,7 +17,8 @@ export function PostModal() {
         <>
             {values.map((v, idx) => (
                 <Button key={idx} className="me-2 mb-2" onClick={() => handleShow(v)}>
-                    {typeof v === 'string' && `Post ${v.split('-')[0]}`}
+                    <i className="fas fa-plus-circle"></i>
+                    {typeof v === 'string' && `${v.split('-')[0]}`}
                 </Button>
             ))}
             <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
