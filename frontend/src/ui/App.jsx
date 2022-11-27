@@ -20,7 +20,7 @@ import {
     faHeart,
     faPlusCircle,
 } from "@fortawesome/free-solid-svg-icons";
-library.add(faHeart);
+library.add(faHeart, faPlusCircle);
 
 
 
