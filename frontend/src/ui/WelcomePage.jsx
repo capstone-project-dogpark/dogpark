@@ -2,6 +2,8 @@ import React from "react"
 import {Container, Row, Col, Image} from "react-bootstrap";
 import {FeedView} from "./components/FeedView.jsx";
 import Button from 'react-bootstrap/Button';
+import {PostModal} from "./components/PostModal.jsx";
+
 
 export function WelcomePage () {
     return (
@@ -12,7 +14,7 @@ export function WelcomePage () {
             </Container>
 
             <Container className="mt-2 text-center mb-5">
-                                <Button size="sm" variant="primary">Create Post</Button>
+                                <PostModal/>
             </Container>
 
             <FeedView/>
