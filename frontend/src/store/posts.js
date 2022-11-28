@@ -1,5 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {httpConfig} from "../utils/http-config.js";
+import {fetchProfileByProfileId} from "./profiles.js";
 
 const slice = createSlice({
     name: "posts",
