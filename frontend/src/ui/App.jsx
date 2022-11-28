@@ -14,7 +14,13 @@ import {ProfileViewPage} from "./ProfileViewPage.jsx";
 import 'mapbox-gl/dist/mapbox-gl.css'
 import {DogParks} from './DogParks.jsx';
 import {CommunityPage} from "./CommunityPage.jsx";
-
+import {FeedView} from "./components/FeedView";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {
+    faHeart,
+    faPlusCircle,
+} from "@fortawesome/free-solid-svg-icons";
+library.add(faHeart, faPlusCircle);
 
 
 

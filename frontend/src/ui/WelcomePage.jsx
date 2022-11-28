@@ -12,11 +12,9 @@ export function WelcomePage () {
                 <h1>Welcome, Furball!</h1>
                 <Image fluid={true} className={"rounded-circle"} src={"https://www.placecage.com/100/100"} alt={"place cage image"} />
             </Container>
-
             <Container className="mt-2 text-center mb-5">
                 <PostModal/>
             </Container>
-
             <FeedView/>
         </>
     )
