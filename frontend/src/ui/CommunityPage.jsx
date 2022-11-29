@@ -21,7 +21,10 @@ export function CommunityPage() {
     useEffect(initialEffects, [dispatch])
     console.log(posts)
     return (
-        <FeedView/>
+        <>
+            {posts.map(post => <FeedView post={post} key={post.postId}/>)}
+
+        </>
     );
 }
 

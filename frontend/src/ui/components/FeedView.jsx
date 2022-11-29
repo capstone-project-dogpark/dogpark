@@ -4,9 +4,10 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import {Container, Row, Col} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import posts from "../../store/posts.js";
 
 export function FeedView({post}) {
-    console.log(post)
+    const {postCaption} = post
     return (
         <>
             <Container>
@@ -15,9 +16,7 @@ export function FeedView({post}) {
                 <Card.Img variant="top" src="https://www.placecage.com/400/400" />
                 <Card.Body>
                     <Button size="sm"><FontAwesomeIcon icon="fa-heart" /></Button>
-                    <Card.Text>
-                        Caption for post here.
-                    </Card.Text>
+                    <Card.Text>{postCaption}</Card.Text>
                     <Form style={{ width: '20rem' }}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label></Form.Label>
