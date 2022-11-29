@@ -20,21 +20,23 @@ export function SignUp () {
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
+                <Form.Group controlId="dogsName">
+                    <Form.Label></Form.Label>
+                    <Form.Control type="name" placeholder="Dog's Name" />
+                    <Form.Text className="text-muted">
+                    </Form.Text>
+                </Form.Group>
                 <Form.Group controlId="createPassword">
                     <Form.Label></Form.Label>
-                    <Form.Control type="email" placeholder="Create a password" />
+                    <Form.Control type="password" placeholder="Create a password" />
                     <Form.Text className="text-muted">
                     </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="confirmPassword">
                     <Form.Label></Form.Label>
-                    <Form.Control type="email" placeholder="Confirm password" />
+                    <Form.Control type="password" placeholder="Confirm password" />
                     <Form.Text className="text-muted">
                     </Form.Text>
-                </Form.Group>
-                <Form.Group controlId="dogsName">
-                    <Form.Label></Form.Label>
-                    <Form.Control type="password" placeholder="Dog's Name" />
                 </Form.Group>
                 <Button className="mt-3" type="submit">Submit</Button>
             </Form>
