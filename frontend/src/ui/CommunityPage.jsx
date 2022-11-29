@@ -5,29 +5,23 @@ import {CardImg} from "react-bootstrap";
 import {Comment} from "./components/Comment.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllPosts} from "../store/posts.js";
+import {FeedView} from "./components/FeedView";
 
 
 
 export function CommunityPage() {
-    return (
-        <Card style={{width: '18rem'}}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-                <Card.Text>Caption</Card.Text>
-                <Comment/>
-            </Card.Body>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-                <Card.Text>Caption</Card.Text>
-                <Comment/>
-            </Card.Body>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-                <Card.Text>Caption</Card.Text>
-                <Comment/>
-            </Card.Body>
+    const posts = useSelector (state => state.posts ? state.posts: [])
 
-        </Card>
+    const dispatch = useDispatch ()
+
+    function initialEffects(){
+        dispatch(fetchAllPosts())
+    }
+
+    useEffect(initialEffects, [dispatch])
+    console.log(posts)
+    return (
+        <FeedView/>
     );
 }
 

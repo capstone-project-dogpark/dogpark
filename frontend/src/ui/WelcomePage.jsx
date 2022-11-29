@@ -27,7 +27,7 @@ export function WelcomePage () {
             <Container className="mt-2 text-center mb-5">
                 <PostModal/>
             </Container>
-            {FeedView.map(FeedView => <FeedView misquote={FeedView} key={FeedView.FeedViewId}/>)}
+           {posts.map(post => <FeedView post={post} key={post.postId}/>)}
         </>
     )
 }
