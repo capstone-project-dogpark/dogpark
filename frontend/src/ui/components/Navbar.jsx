@@ -5,7 +5,7 @@ import {SignUp} from "../SignUp.jsx";
 export function Navigation() {
     return (
         <>
-            <Navbar navbar-collapse expand="lg" bg="light" variant="light">
+            <Navbar navbar-collapse="true" expand="lg" bg="light" variant="light">
                 <Container fluid>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nar">
