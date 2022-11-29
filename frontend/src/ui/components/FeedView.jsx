@@ -6,6 +6,7 @@ import {Container, Row, Col} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export function FeedView() {
+    const {FeedViewAttribution, FeedViewContent, FeedViewSubmitter} = FeedView
     return (
         <>
             <Container>

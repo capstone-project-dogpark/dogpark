@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {CommunityPost} from "./components/CommunityPost.jsx";
 import Card from "react-bootstrap/Card";
 import {CardImg} from "react-bootstrap";
 import {Comment} from "./components/Comment.jsx";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchAllPosts} from "../store/posts.js";
 
 
 

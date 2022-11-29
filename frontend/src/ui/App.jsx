@@ -20,13 +20,15 @@ import {
     faHeart,
     faPlusCircle,
 } from "@fortawesome/free-solid-svg-icons";
+import {Provider} from "react-redux";
 library.add(faHeart, faPlusCircle);
 
 
 
-export function App() {
+export function App({store}) {
     return (
         <>
+            <Provider store={store}>
             <BrowserRouter>
             <Navigation/>
                 <Routes>
@@ -41,6 +43,7 @@ export function App() {
                     <Route  path={"/CommunityPage"} element={<CommunityPage />} />
                 </Routes>
             </BrowserRouter>
+            </Provider>
         </>
     )
 }
