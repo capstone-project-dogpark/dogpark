@@ -7,7 +7,6 @@ import data from "../data/cityparks.json"
 export function DogParks () {
     const [points, setPoints] = React.useState([ { lat: 35.332, lng: -106.652 }])
 
-
     React.useEffect(()=>{
         const parks =[];
         // console.log(data.features[0].geometry.rings[0][0]);
