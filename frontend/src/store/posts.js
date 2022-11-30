@@ -19,14 +19,10 @@ export const fetchAllPosts = () => async (dispatch) => {
     const {data} = await httpConfig.get("/apis/post");
     dispatch(setAllPosts(data));
 
-    let likeIdSet = new Set
-    for(let like of data){
-        const {likeId, likePostId} = like
-        if(likeIdSet.has(likePostId) === false) {
-            likeIdSet.add(likePostId)
-              dispatch(fetchLikesByLikePostId(likeId))
-        }
-        dispatch(fetchLikesByLikePostId(likeId))
+
+    for(let post of data){
+        const {postId} = post
+        dispatch(fetchLikesByLikePostId(postId))
     }
 };
 

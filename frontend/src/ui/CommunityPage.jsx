@@ -11,7 +11,6 @@ import {FeedView} from "./components/FeedView";
 
 export function CommunityPage() {
     const posts = useSelector (state => state.posts ? state.posts: [])
-
     const dispatch = useDispatch ()
 
     function initialEffects(){

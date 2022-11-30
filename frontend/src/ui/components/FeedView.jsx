@@ -7,8 +7,10 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import posts, {setAllPosts} from "../../store/posts.js";
 import {useDispatch, useSelector} from "react-redux";
 import {httpConfig} from "../../utils/http-config.js";
+import {fetchLikesByLikePostId} from "../../store/likes.js";
 
 export function FeedView({post}) {
+
     const dispatch = useDispatch ()
     const {postCaption} = post
     const likes = useSelector(state => {
@@ -18,28 +20,29 @@ export function FeedView({post}) {
             return state.likes[post.postId]
         }
     })
-
-    const profile = useSelector(state => {
-        if (state.profile[post.postProfileId] === undefined){
-            return null
-        } else {
-            return state.profile[post.postProfileId]
-        }
-    })
+    console.log(likes)
+    //
+    // const profile = useSelector(state => {
+    //     if (state.profile[post.postProfileId] === undefined){
+    //         return null
+    //     } else {
+    //         return state.profile[post.postProfileId]
+    //     }
+    // })
 
 
     const clickLike = () => {
         httpConfig.post('/apis/like/', {likesPostId: post.postId})
             .then(reply =>{
                 if (reply.status === 200) {
-                    dispatch(setAllPosts())
+                    dispatch(fetchLikesByLikePostId(post.postId))
                 }
             })
     }
 
-    if (profile === null) {
-        return (<></>)
-    }
+    // if (profile === null) {
+    //     return (<></>)
+    // }
 
     return (
         <>
