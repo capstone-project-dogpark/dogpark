@@ -1,15 +1,16 @@
 import React from 'react';
-import {httpConfig} from "../../../utils/httpConfig";
+
 import {Formik} from "formik";
 import * as Yup from "yup";
 import {useDispatch} from "react-redux";
 import jwtDecode from 'jwt-decode'
 import { getAuth} from "../../../../store/auth.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { FormDebugger } from '../../FormDebugger'
+import { FormDebugger } from '../../display-error/FormDebugger'
 import { Button, Form, FormControl, InputGroup } from 'react-bootstrap'
 import { DisplayError } from '../../display-error/DisplayError'
-import { DisplayStatus } from '../../display-status/DisplayStatus'
+import { DisplayStatus } from '../../display-error/DisplayStatus'
+import {httpConfig} from "../../../../utils/http-config.js";
 
 
 export const SignInForm = () => {
@@ -130,6 +131,7 @@ function SignInFormContent(props) {
                     </Button>
                 </Form.Group>
             </Form>
+            <FormDebugger/>
             <div className="pt-3">
                 <DisplayStatus status={status} />
             </div>

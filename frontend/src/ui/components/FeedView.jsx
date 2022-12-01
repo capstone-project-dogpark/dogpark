@@ -32,7 +32,7 @@ export function FeedView({post}) {
 
 
     const clickLike = () => {
-        httpConfig.post('/apis/like/', {likesPostId: post.postId})
+        httpConfig.post('/apis/like/', {likePostId: post.postId})
             .then(reply =>{
                 if (reply.status === 200) {
                     dispatch(fetchLikesByLikePostId(post.postId))

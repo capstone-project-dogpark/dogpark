@@ -2,6 +2,7 @@ import React from "react"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {Container, Row, Col} from "react-bootstrap";
+import {SignInForm} from "./components/main-nav/sign-in/SignInForm";
 
 export function Login () {
     return (
@@ -26,6 +27,7 @@ export function Login () {
                 </Form.Group>
                 <Button variant="primary" type="submit">Login</Button>
             </Form>
+                        <SignInForm/>
                     </Col>
                 </Row>
             </Container>
