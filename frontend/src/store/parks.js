@@ -5,17 +5,17 @@ const parksSlice = createSlice({
     name: 'parks',
     initialState: [],
     reducers: {
-        setAllLocation: (location, action) => {
+        setAllParks: (parks, action) => {
             return action.payload
         }
     }
 })
 
-export const {setAllParks} = parksSlice
+export const {setAllParks} = parksSlice.actions
 
 export default parksSlice.reducer
 
 export const fetchAllParks = () => async dispatch => {
-    const {data} = await httpConfig.get('/apis/parks')
+    const {data} = await httpConfig.get('/apis/park')
     dispatch(setAllParks(data))
 }
