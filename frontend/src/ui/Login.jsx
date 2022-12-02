@@ -14,19 +14,6 @@ export function Login () {
             <Container>
                 <Row className="justify-content-center">
                     <Col className="col-7">
-            <Form className="text-center">
-                <Form.Group className="mb-3" controlId="email">
-                    <Form.Label></Form.Label>
-                    <Form.Control type="email" placeholder="Email" />
-                    <Form.Text className="text-muted">
-                    </Form.Text>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="password">
-                    <Form.Label></Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
-                </Form.Group>
-                <Button variant="primary" type="submit">Login</Button>
-            </Form>
                         <SignInForm/>
                     </Col>
                 </Row>

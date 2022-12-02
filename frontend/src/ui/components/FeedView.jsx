@@ -61,6 +61,7 @@ export function FeedView({post}) {
                         </Form.Group>
                     </Form>
                 </Card.Body>
+
             </Card>
                 </Row>
             </Container>
