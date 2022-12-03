@@ -69,7 +69,7 @@ export function FeedView({post}) {
                             <Button size="sm" className="mt-2" type="submit">Submit</Button>
                         </Form.Group>
                     </Form>
-                    <Card.Text></Card.Text>
+                    {comments.map(comment => <Card.Text key = {comment.commentId}>{comment.commentText}</Card.Text>)}
                 </Card.Body>
 
             </Card>
