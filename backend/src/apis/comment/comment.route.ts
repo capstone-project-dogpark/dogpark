@@ -2,7 +2,8 @@ import { Router } from 'express'
 import {
     getAllCommentsController,
     getCommentByCommentIdController,
-    postCommentController
+    postCommentController,
+    getCommentsByCommentPostIdController
 } from "./comment.controller";
 import {asyncValidatorController} from "../../utils/controllers/async-validator.controller"
 import { check, checkSchema} from "express-validator"
@@ -14,9 +15,9 @@ CommentRouter.route('commentId').get(asyncValidatorController([
     check('commentId','please provide a valid commentId').isUUID()
 ]),getCommentByCommentIdController)
 
-CommentRouter.route('/commentProfiledId/:commentProfileId').get(asyncValidatorController([
-    check('commentProfileId', 'please provide a valid commentId').isUUID()
-]),asyncValidatorController)
+CommentRouter.route('/commentPostId/:commentPostId').get(asyncValidatorController([
+    check('commentPostId', 'please provide a valid commentId').isUUID()
+]),getCommentsByCommentPostIdController)
 
 CommentRouter.route('/')
 .get(getAllCommentsController)

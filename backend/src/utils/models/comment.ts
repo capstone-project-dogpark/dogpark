@@ -1,4 +1,5 @@
 import { sql } from '../database.utils'
+import {Like} from "./like";
 
 export interface Comment {
     commentId: string|null
@@ -28,3 +29,6 @@ export async function selectCommentByCommentProfileId (commentId: string): Promi
     const result = <Comment[]> await sql `SELECT comment_id, comment_post_id, comment_profile_id, comment_text, comment_date FROM comment WHERE comment_profile_id = ${commentId}`
     return result?.length === 1 ? result [0] : null
 }
+
+export async function selectCommentsByCommentPostId (commentPostId: string): Promise<Comment[]> {
+    return <Comment[]> await sql `SELECT comment_id, comment_post_id, comment_profile_id, comment_date, comment_text FROM "comment" WHERE comment_post_id = ${commentPostId}` }

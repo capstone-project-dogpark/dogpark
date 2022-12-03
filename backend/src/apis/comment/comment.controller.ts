@@ -3,6 +3,7 @@ import {
     insertComment,
     selectAllComments,
     selectCommentByCommentId,
+    selectCommentsByCommentPostId,
     selectCommentByCommentProfileId,
     Comment
 } from "../../utils/models/comment";
@@ -25,10 +26,10 @@ export async function getAllCommentsController (request: Request, response: Resp
     }
 
 
-export async function getCommentByCommentProfileIdController (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
+export async function getCommentsByCommentPostIdController (request: Request, response: Response, nextFunction: NextFunction): Promise<Response<Status>> {
     try {
-        const {commentProfileId} = request.params
-        const data = await selectCommentByCommentId (commentProfileId)
+        const {commentPostId} = request.params
+        const data = await selectCommentsByCommentPostId (commentPostId)
         const status: Status = { status: 200, message: null, data}
         return response.json(status)
     } catch (error) {

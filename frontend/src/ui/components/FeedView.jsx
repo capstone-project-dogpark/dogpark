@@ -9,6 +9,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {httpConfig} from "../../utils/http-config.js";
 import {fetchLikesByLikePostId} from "../../store/likes.js";
 
+
+
 export function FeedView({post}) {
 
     const dispatch = useDispatch ()
@@ -20,7 +22,14 @@ export function FeedView({post}) {
             return state.likes[post.postId]
         }
     })
-    console.log(likes)
+    const comments = useSelector(state => {
+        if(state.comments[post.postId] === undefined){
+            return[]
+        } else {
+            return state.comments[post.postId]
+        }
+    })
+    console.log(comments)
     //
     // const profile = useSelector(state => {
     //     if (state.profile[post.postProfileId] === undefined){
@@ -54,12 +63,13 @@ export function FeedView({post}) {
                     <Button onClick={clickLike} size="sm">{likes.length}<FontAwesomeIcon icon="fa-heart" /></Button>
                     <Card.Text>{postCaption}</Card.Text>
                     <Form style={{ width: '20rem' }}>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Group className="mb-3">
                             <Form.Label></Form.Label>
                             <Form.Control type="comment" placeholder="Comment" />
                             <Button size="sm" className="mt-2" type="submit">Submit</Button>
                         </Form.Group>
                     </Form>
+                    <Card.Text></Card.Text>
                 </Card.Body>
 
             </Card>

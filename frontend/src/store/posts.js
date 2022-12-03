@@ -2,6 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {httpConfig} from "../utils/http-config.js";
 import {fetchProfileByProfileId} from "./profiles.js";
 import {fetchLikesByLikePostId} from "./likes.js";
+import {fetchCommentsByCommentPostId} from "./comments.js";
 
 const slice = createSlice({
     name: "posts",
@@ -23,6 +24,7 @@ export const fetchAllPosts = () => async (dispatch) => {
     for(let post of data){
         const {postId} = post
         dispatch(fetchLikesByLikePostId(postId))
+        dispatch(fetchCommentsByCommentPostId(postId))
     }
 };
 
