@@ -10,39 +10,45 @@ import * as Yup from "yup"
 import {FormDebugger} from "./display-error/FormDebugger.jsx";
 import {DisplayError} from "./display-error/DisplayError.jsx";
 import {DisplayStatus} from "./display-error/DisplayStatus.jsx";
+import {FormControl, Image, InputGroup} from "react-bootstrap";
+import {useDropzone} from "react-dropzone";
 
 
 export function PostModal() {
     const dispatch = useDispatch()
     const initialValues = {
         postCaption: "",
-        postAvatarUrl: ""
+        postImageUrl: ""
     }
 
-    function handleSubmit(values, {resetForm, setStatus}) {
-        httpConfig.post("/apis/post", values).then(reply => {
-                const {message, status, type} = reply
-                if (status === 200) {
-                    resetForm()
-                    dispatch(fetchAllPosts())
+    function handleSubmit (values, {resetForm, setStatus}) {
+    console.log(values)
+            httpConfig.post(`/apis/image-upload`, values.postImageUrl)
+                .then(reply => {
+
+                    if (reply.status === 200) {
+                            httpConfig.post("/apis/post", {...values, postImageUrl: reply.message})
+                                .then(reply => {
+                                    let {message, type} =reply
+
+                                    if (reply.status === 200) {
+                                        resetForm()
+                                        dispatch(fetchAllPosts())
+                                    }
+                                    setStatus({message, type})
+                                    return (reply)
+                                })
                 }
-                setStatus({message, type})
-            }
-        )
+        })
     }
 
     const validator = Yup.object().shape({
         postCaption: Yup.string()
             .required("Please write a caption for your post")
-            .max(),
-        postImageUrl: Yup.string()
+            .max(252, "Caption should not exceed 252 characters"),
+        postImageUrl: Yup.mixed()
             .required("Please upload an image for your post")
-            .max(36, "Image url cannot exceed 36 characters"),
     })
-
-
-
-
 
     const values = [''];
     const [fullscreen, setFullscreen] = useState(true);
@@ -85,6 +91,7 @@ function PostFormContent(props) {
         dirty,
         isSubmitting,
         handleChange,
+        setFieldValue,
         handleBlur,
         handleSubmit,
         handleReset
@@ -101,18 +108,69 @@ function PostFormContent(props) {
                            handleChange,
                            handleBlur,
                            setFieldValue,
-                           fieldValue: 'postAvatarUrl'
+                           fieldValue: 'postImageUrl'
                        }}
                    />
                    <Form.Control   onChange={handleChange}
                                    onBlur={handleBlur}
-                                   value={values.post} className="my-2" size="sm" type="text" placeholder="Write a caption" />
+                                   value={values.postCaption} className="my-2" name="postCaption" size="sm" type="text" placeholder="Write a caption" />
 
-                   <Button variant="primary">Post</Button>{''}
+                   <Button type="submit" variant="primary">Post</Button>{''}
 
                </Form.Group>
 
            </Form>
+            <FormDebugger {...props}/>
             </>
             )
             }
+
+function ImageDropZone ({ formikProps }) {
+
+    const onDrop = React.useCallback(acceptedFiles => {
+
+        const formData = new FormData()
+        formData.append('image', acceptedFiles[0])
+
+        formikProps.setFieldValue(formikProps.fieldValue, formData)
+
+    }, [formikProps])
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
+
+    return (
+        <Form.Group className={"mb-3"} {...getRootProps()}>
+            <Form.Label>User Avatar</Form.Label>
+
+            <InputGroup size="lg" className="">
+                {
+                    formikProps.values.profileImageUrl &&
+                    <>
+                        <div className="bg-transparent m-0">
+                            <Image  fluid={true} height={100} rounded={true} thumbnail={true} width={100} alt="user avatar" src={formikProps.values.profileImageUrl} />
+                        </div>
+
+                    </>
+                }
+                <div className="d-flex flex-fill bg-light justify-content-center align-items-center border rounded">
+                    <FormControl
+                        aria-label="profile avatar file drag and drop area"
+                        aria-describedby="image drag drop area"
+                        className="form-control-file"
+                        accept="image/*"
+                        onChange={formikProps.handleChange}
+                        onBlur={formikProps.handleBlur}
+                        {...getInputProps()}
+                    />
+                    {
+                        isDragActive ?
+                            <span className="align-items-center" >Drop image here</span> :
+                            <span className="align-items-center" >Drag and drop image here, or click here to select an image</span>
+                    }
+                </div>
+
+
+            </InputGroup>
+        </Form.Group>
+    )
+}
+
