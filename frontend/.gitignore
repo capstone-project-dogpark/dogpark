@@ -23,9 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 
-<<<<<<< HEAD
+
 */frontend/setupProxy.js
 
-=======
+
 */frontend/setupProxy.js
->>>>>>> fe2e7646895278cd3398a1615ab7e4bc3e197e80
+

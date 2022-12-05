@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {httpConfig} from "../../utils/http-config.js";
 import {fetchAllPosts} from "../../store/posts.js";
 import {Formik} from "formik";
@@ -12,6 +12,7 @@ import {DisplayError} from "./display-error/DisplayError.jsx";
 import {DisplayStatus} from "./display-error/DisplayStatus.jsx";
 import {FormControl, Image, InputGroup} from "react-bootstrap";
 import {useDropzone} from "react-dropzone";
+import {fetchAuth} from "../../store/auth.js";
 
 
 export function PostModal() {
@@ -20,14 +21,15 @@ export function PostModal() {
         postCaption: "",
         postImageUrl: ""
     }
-
+    React.useEffect(()=>{dispatch(fetchAuth())}, [dispatch])
+    const auth = useSelector(state => state.auth)
     function handleSubmit (values, {resetForm, setStatus}) {
     console.log(values)
             httpConfig.post(`/apis/image-upload`, values.postImageUrl)
                 .then(reply => {
 
                     if (reply.status === 200) {
-                            httpConfig.post("/apis/post", {...values, postImageUrl: reply.message})
+                            httpConfig.post("/apis/post", {...values, postImageUrl: reply.message, postProfileId: auth?.profileId, postParkId: null})
                                 .then(reply => {
                                     let {message, type} =reply
 
