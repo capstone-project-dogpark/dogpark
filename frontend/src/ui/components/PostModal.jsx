@@ -71,7 +71,7 @@ export function PostModal() {
             ))}
             <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Creat a post</Modal.Title>
+                    <Modal.Title>Create a post</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
 

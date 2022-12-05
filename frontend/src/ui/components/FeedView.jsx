@@ -8,6 +8,8 @@ import posts, {setAllPosts} from "../../store/posts.js";
 import {useDispatch, useSelector} from "react-redux";
 import {httpConfig} from "../../utils/http-config.js";
 import {fetchLikesByLikePostId} from "../../store/likes.js";
+import {Formik} from "formik";
+import {CommentForm} from "./CommentForm";
 
 
 
@@ -57,18 +59,20 @@ export function FeedView({post}) {
     return (
         <>
             <Container>
-                <Row className="justify-content-center">
+                <Row className="justify-content-center mt-3 mb-3">
             <Card style={{ width: '30rem' }}>
                 <Card.Img variant="top" src={post.postImageUrl} alt={postCaption} />
                 <Card.Body>
                     <Button onClick={clickLike} size="sm">{likes.length}<FontAwesomeIcon icon="fa-heart" /></Button>
                     <Card.Text>{postCaption}</Card.Text>
+                    {/*Comment form insert here*/}
+                    <CommentForm/>
                     <Form style={{ width: '20rem' }}>
-                        <Form.Group className="mb-3">
-                            <Form.Label></Form.Label>
-                            <Form.Control type="comment" placeholder="Comment" />
-                            <Button size="sm" className="mt-2" type="submit">Submit</Button>
-                        </Form.Group>
+                        {/*<Form.Group className="mb-3">*/}
+                        {/*    <Form.Label></Form.Label>*/}
+                        {/*    <Form.Control type="comment" placeholder="Comment" />*/}
+                        {/*    <Button size="sm" className="mt-2" type="submit">Submit</Button>*/}
+                        {/*</Form.Group>*/}
                     </Form>
                     {comments.map(comment => <Card.Text key = {comment.commentId}>{comment.commentText}</Card.Text>)}
                 </Card.Body>
