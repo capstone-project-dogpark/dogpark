@@ -14,7 +14,8 @@ import {fetchLikesByLikePostId} from "../../store/likes.js";
 export function FeedView({post}) {
 
     const dispatch = useDispatch ()
-    const {postCaption} = post
+    const {postCaption, postImage} = post
+    console.log(postImage)
     const likes = useSelector(state => {
         if(state.likes[post.postId] === undefined){
             return[]
@@ -58,7 +59,7 @@ export function FeedView({post}) {
             <Container>
                 <Row className="justify-content-center">
             <Card style={{ width: '30rem' }}>
-                <Card.Img variant="top" src="https://www.placecage.com/400/400" />
+                <Card.Img variant="top" src={post.postImageUrl} alt={postCaption} />
                 <Card.Body>
                     <Button onClick={clickLike} size="sm">{likes.length}<FontAwesomeIcon icon="fa-heart" /></Button>
                     <Card.Text>{postCaption}</Card.Text>
