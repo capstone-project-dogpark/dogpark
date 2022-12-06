@@ -13,7 +13,7 @@ export function Pin(props) {
     return(
         <Marker key={`marker-${index}`} longitude={lng} latitude={lat}>
             <div className={"pinTop"} style={{color:"Black"}}>
-            <h3>{name}</h3><p>{address}</p>
+            <h5>{name}</h5><p>{address}</p>
             </div>
             <svg
                 height={SIZE}
