@@ -17,15 +17,15 @@ export async function insertPost(post: Post): Promise<string> {
 }
 
 export async function selectAllPosts(): Promise<Post[]> {
-    return sql <Post[]> `SELECT post_id, post_profile_id, post_caption, post_date FROM post ORDER BY post_date DESC`
+    return sql <Post[]> `SELECT post_id, post_profile_id, post_caption, post_date, post_image_url FROM post ORDER BY post_date DESC`
 }
 
 export async function selectPostByPostId (postId: string): Promise<Post|null> {
-    const result = <Post[]> await sql `SELECT post_id, post_profile_id, post_caption, post_date FROM post WHERE post_id = ${postId}`
+    const result = <Post[]> await sql `SELECT post_id, post_profile_id, post_caption, post_date, post_image_url FROM post WHERE post_id = ${postId}`
     return result?.length === 1 ? result [0] : null
 }
 
 export async function selectPostByPostProfileId (postId: string): Promise<Post|null> {
-    const result = <Post[]> await sql `SELECT post_id, post_profile_id, post_caption, post_date FROM post WHERE post_profile_id = ${postId}`
+    const result = <Post[]> await sql `SELECT post_id, post_profile_id, post_caption, post_date, post_image_url FROM post WHERE post_profile_id = ${postId}`
     return result?.length === 1 ? result [0] : null
 }

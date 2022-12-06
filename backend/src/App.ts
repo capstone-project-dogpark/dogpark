@@ -13,6 +13,7 @@ import {parkRouter} from "./apis/park/park.route";
 import {followRouter} from "./apis/follow/follow-route";
 import {PostRoute} from "./apis/post/post.route";
 import {likeRouter} from "./apis/like/like.route";
+import {ImageUploadRoute} from "./apis/image-upload/image-upload.route";
 const redisClient = createClient({ legacyMode: true, socket: { host: process.env.REDIS_HOST } })
 redisClient.connect().catch(console.error)
 const RedisStore = RedisConnect(session)
@@ -63,6 +64,7 @@ export class App {
         this.app.use("/apis/park", parkRouter)
         this.app.use("/apis/follow", followRouter)
         this.app.use('/apis/like', likeRouter)
+        this.app.use('/apis/image-upload', ImageUploadRoute)
     }
 
     // starts the server and tells the terminal to post a message that the server is running and on what port

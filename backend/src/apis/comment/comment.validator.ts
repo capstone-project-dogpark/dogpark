@@ -6,6 +6,12 @@ export const commentValidator: Schema = {
             errorMessage: 'Please provide a valid commentProfileId'
         }
     },
+    commentPostId:{
+        isUUID: {
+            errorMessage: 'Please provide a valid postId'
+        }
+    },
+
     commentText: {
         isLength: {
             errorMessage: 'A comment cannot be longer than 252 characters',

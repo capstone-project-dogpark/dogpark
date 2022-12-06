@@ -43,11 +43,11 @@ CREATE TABLE park (
 
 CREATE TABLE post (
                         post_id uuid NOT NULL,
-                        post_park_id uuid NOT NULL,
+                        post_park_id uuid,
                         post_profile_id uuid NOT NULL,
                         post_caption VARCHAR,
                         post_date DATE NOT NULL,
-                        post_image_url VARCHAR(36) NULL,
+                        post_image_url VARCHAR(255) NULL,
 
                        FOREIGN KEY(post_park_id) REFERENCES park (park_id),
                        FOREIGN KEY(post_profile_id) REFERENCES profile (profile_id),

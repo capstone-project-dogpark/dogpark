@@ -3,10 +3,11 @@ import { Readable} from "stream"
 import { v2 as cloudinaryUtils, UploadStream, UploadApiOptions } from 'cloudinary';
 
 export const upLoadToCloudinary = async (file: Express.Multer.File): Promise<string> => {
+
     cloudinaryUtils.config({
         api_key: process.env.CLOUDINARY_KEY,
         api_secret: process.env.CLOUDINARY_SECRET,
-        cloud_name: process.env.CLOUD_NAME
+        cloud_name: process.env.CLOUDINARY_NAME
     })
 
     return await new Promise((resolve, reject): void => {
