@@ -10,12 +10,12 @@ import { Button, Form, FormControl, InputGroup } from 'react-bootstrap'
 import { DisplayError } from '../../display-error/DisplayError'
 import { DisplayStatus } from '../../display-error/DisplayStatus'
 import {httpConfig} from "../../../../utils/http-config.js";
-import {useNavigation} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {Login} from "../../../Login.jsx";
 
 
 export const SignInForm = () => {
-
+const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const validator = Yup.object().shape({
@@ -44,23 +44,7 @@ export const SignInForm = () => {
                     let jwtToken = jwtDecode(reply.headers["authorization"])
                     dispatch(getAuth(jwtToken))
                     // React useNavigate will go here to welcome page
-
-                    function Login() {
-                        const navigation = useNavigation();
-                        const text =
-                        navigation.state === "submitting"
-                        ? "Saving..."
-                        : navigation.state === "loading"
-                        ? "Saved!"
-                        : "Go";
-
-                        let isRedirecting =
-                            navigation.state === "loading" &&
-                            navigation.formData != null &&
-                            navigation.formAction !== navigation.location.welcomePage;
-
-                        return <button type="submit">{text}</button>;
-                    }
+                    navigate('/WelcomePage')
                 }
                 setStatus({message, type});
             });
