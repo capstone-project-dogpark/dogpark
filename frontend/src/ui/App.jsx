@@ -7,10 +7,10 @@ import { FourOhFour } from './FourOhFour.jsx'
 import {Navigation} from "./components/Navbar.jsx";
 import {Route, BrowserRouter, Routes} from 'react-router-dom'
 import {SignUp} from './SignUp.jsx'
-import {WelcomePage} from "./WelcomePage.jsx";
+import {WelcomePage} from "./ProfileViewPage/WelcomePage.jsx";
 import {Login} from "./Login.jsx";
 import {MyFriendsPage} from "./MyFriendsPage.jsx";
-import {ProfileViewPage} from "./ProfileViewPage.jsx";
+import {ProfileViewPage} from "./ProfileViewPage/ProfileViewPage.jsx";
 import 'mapbox-gl/dist/mapbox-gl.css'
 import {DogParks} from './DogParks.jsx';
 import {CommunityPage} from "./CommunityPage.jsx";

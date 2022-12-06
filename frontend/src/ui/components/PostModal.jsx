@@ -122,7 +122,7 @@ function PostFormContent(props) {
                </Form.Group>
 
            </Form>
-            <FormDebugger {...props}/>
+
             </>
             )
             }

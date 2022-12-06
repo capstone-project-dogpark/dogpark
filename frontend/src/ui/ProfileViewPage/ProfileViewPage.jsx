@@ -2,12 +2,13 @@ import React from "react";
 import {CardImg, Col, Container, Image, Row} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {FeedView} from "./components/FeedView";
+import {FeedView} from "../components/FeedView.jsx";
 import Card from "react-bootstrap/Card";
-import {CommentForm} from "./components/CommentForm.jsx";
+import {CommentForm} from "../components/CommentForm.jsx";
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {IndividualPost} from "./components/IndividualPost";
+import {IndividualPost} from "../components/IndividualPost.jsx";
+import {ProfileModal} from "./ProfileModal";
 
 export function ProfileViewPage() {
     const {profileId} = useParams()

@@ -1,23 +1,24 @@
 import React from 'react';
-
 import * as Yup from "yup";
 import {Formik} from "formik";
-import { Button, Form, FormControl, InputGroup } from 'react-bootstrap'
+import {Button, Form, FormControl, Image, InputGroup} from 'react-bootstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { DisplayError } from '../../display-error/DisplayError'
-import { DisplayStatus } from '../../display-error/DisplayStatus.jsx'
-import {httpConfig} from "../../../../utils/http-config.js";
+import {DisplayError} from "../components/display-error/DisplayError.jsx";
+import {DisplayStatus} from "../components/display-error/DisplayStatus.jsx";
+import {httpConfig} from "../../utils/http-config.js";
+import {useSelector} from "react-redux";
+import {fetchAllPosts} from "../../store/posts.js";
 import {useDropzone} from "react-dropzone";
 
-export const SignUpForm = () => {
-    const signUp = {
-        profileEmail: "",
-        profileAtHandle: "",
-        profileAboutPet: "",
-        profilePassword: "",
-        profilePasswordConfirm: "",
-        profileImage: null,
-    };
+
+export const UpdateProfileForm = () => {
+    const profile= useSelector(state => state.auth ?? null)
+    // const signUp = {
+    //     profileEmail: "",
+    //     profileAtHandle: "",
+    //     profileAboutPet: "",
+    //     profileImage: null,
+    // };
 
     const validator = Yup.object().shape({
         profileEmail: Yup.string()
@@ -27,42 +28,55 @@ export const SignUpForm = () => {
             .required("profile handle is required"),
         profileAboutPet: Yup.string()
             .required("profile About pet is required"),
-        profilePassword: Yup.string()
-            .required("Password is required")
-            .min(8, "Password must be at least eight characters"),
-        profilePasswordConfirm: Yup.string()
-            .required("Password Confirm is required")
-            .min(8, "Password must be at least eight characters"),
-
+        profileImage: Yup.mixed()
     });
 
-    const submitSignUp = (values, {resetForm, setStatus}) => {
-        httpConfig.post("/apis/sign-up/", values)
+    // const HandleSubmit = (values, {resetForm, setStatus}) => {
+    //     httpConfig.post("/apis/profile/", values)
+    //         .then(reply => {
+    //                 let {message, type} = reply;
+    //
+    //                 if(reply.status === 200) {
+    //                     resetForm();
+    //                 }
+    //                 setStatus({message, type});
+    //             }
+    //         );
+    // };
+    function HandleSubmit (values, {resetForm, setStatus}) {
+        console.log(values)
+        httpConfig.post(`/apis/image-upload`, values.profileImage)
             .then(reply => {
-                    let {message, type} = reply;
 
-                    if(reply.status === 200) {
-                        resetForm();
-                    }
-                    setStatus({message, type});
+                if (reply.status === 200) {
+                    httpConfig.put(`/apis/profile/${profile.profileId}`, {...values, profileImage: reply.message})
+                        .then(reply => {
+                            let {message, type} =reply
+
+                            if (reply.status === 200) {
+                                resetForm()
+                                // dispatch(fetchAllPosts())
+                            }
+                            setStatus({message, type})
+                            return (reply)
+                        })
                 }
-            );
-    };
-
+            })
+    }
 
     return (
 
         <Formik
-            initialValues={signUp}
-            onSubmit={submitSignUp}
+            initialValues={profile}
+            onSubmit={HandleSubmit}
             validationSchema={validator}
         >
-            {SignUpFormContent}
+            {EditProfileContent}
         </Formik>
 
     )
 };
-function  SignUpFormContent(props){
+function  EditProfileContent(props){
     const {
         status,
         values,
@@ -70,6 +84,7 @@ function  SignUpFormContent(props){
         touched,
         dirty,
         isSubmitting,
+        setFieldValue,
         handleChange,
         handleBlur,
         handleSubmit,
@@ -99,44 +114,7 @@ function  SignUpFormContent(props){
                     <DisplayError errors={errors} touched={touched} field={"profileEmail"} />
                 </Form.Group>
                 {/*controlId must match what is defined by the initialValues object*/}
-                <Form.Group className="mb-1" controlId="profilePassword">
-                    <Form.Label>Password</Form.Label>
-                    <InputGroup>
-                        <InputGroup.Text>
-                            <FontAwesomeIcon icon="key"/>
-                        </InputGroup.Text>
-                        <FormControl
-                            className="form-control"
-                            name="profilePassword"
-                            type="password"
-                            value={values.profilePassword}
-                            placeholder="P@ssword1"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
 
-                        />
-                    </InputGroup>
-                    <DisplayError errors={errors} touched={touched} field={"profilePassword"} />
-                </Form.Group>
-                <Form.Group className="mb-1" controlId="profilePasswordConfirm">
-                    <Form.Label>Confirm Password</Form.Label>
-                    <InputGroup>
-                        <InputGroup.Text>
-                            <FontAwesomeIcon icon="key"/>
-                        </InputGroup.Text>
-                        <FormControl
-                            className="form-control"
-                            name="profilePasswordConfirm"
-                            type="password"
-                            value={values.profilePasswordConfirm}
-                            placeholder="placeholder-placeholder"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-
-                        />
-                    </InputGroup>
-                    <DisplayError errors={errors} touched={touched} field={"profilePasswordConfirm"} />
-                </Form.Group>
 
                 <Form.Group className="mb-1" controlId="profileAtHandle">
                     <Form.Label>Pets Name</Form.Label>
@@ -158,26 +136,6 @@ function  SignUpFormContent(props){
                     <DisplayError errors={errors} touched={touched} field={"profileAtHandle"} />
                 </Form.Group>
 
-                
-                <Form.Group className="mb-1" controlId="profileImage">
-                    <Form.Label>Profile Image</Form.Label>
-                    <InputGroup>
-                        <InputGroup.Text>
-
-                        </InputGroup.Text>
-                        <FormControl
-                            className="form-control"
-                            name="profileImage"
-                            type="text"
-                            value={values.profileImage}
-                            placeholder="placeholder-placeholder"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-
-                        />
-                    </InputGroup>
-                    <DisplayError errors={errors} touched={touched} field={"profileAboutPet"} />
-                </Form.Group>
                 <Form.Group className="mb-1" controlId="profilePhone">
                     <Form.Label>About your Pet</Form.Label>
                     <InputGroup>
@@ -197,6 +155,16 @@ function  SignUpFormContent(props){
                     </InputGroup>
                     <DisplayError errors={errors} touched={touched} field={"profileAboutPet"} />
                 </Form.Group>
+                <Form.Label>Upload Image</Form.Label>
+                <ImageDropZone
+                    formikProps={{
+                        values,
+                        handleChange,
+                        handleBlur,
+                        setFieldValue,
+                        fieldValue: 'profileImage'
+                    }}
+                />
 
                 <Form.Group className={"mt-3"}>
                     <Button className="btn btn-primary" type="submit">Submit</Button>
@@ -218,3 +186,52 @@ function  SignUpFormContent(props){
 
     )
 }
+function ImageDropZone ({ formikProps }) {
+
+    const onDrop = React.useCallback(acceptedFiles => {
+
+        const formData = new FormData()
+        formData.append('image', acceptedFiles[0])
+
+        formikProps.setFieldValue(formikProps.fieldValue, formData)
+
+    }, [formikProps])
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
+
+    return (
+        <Form.Group className={"mb-3"} {...getRootProps()}>
+            <Form.Label>User Avatar</Form.Label>
+
+            <InputGroup size="lg" className="">
+                {
+                    formikProps.values.profileImage &&
+                    <>
+                        <div className="bg-transparent m-0">
+                            <Image  fluid={true} height={100} rounded={true} thumbnail={true} width={100} alt="user avatar" src={formikProps.values.profileImage} />
+                        </div>
+
+                    </>
+                }
+                <div className="d-flex flex-fill bg-light justify-content-center align-items-center border rounded">
+                    <FormControl
+                        aria-label="profile avatar file drag and drop area"
+                        aria-describedby="image drag drop area"
+                        className="form-control-file"
+                        accept="image/*"
+                        onChange={formikProps.handleChange}
+                        onBlur={formikProps.handleBlur}
+                        {...getInputProps()}
+                    />
+                    {
+                        isDragActive ?
+                            <span className="align-items-center" >Drop image here</span> :
+                            <span className="align-items-center" >Drag and drop image here, or click here to select an image</span>
+                    }
+                </div>
+
+
+            </InputGroup>
+        </Form.Group>
+    )
+}
+
