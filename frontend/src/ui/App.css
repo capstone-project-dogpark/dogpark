@@ -1,0 +1,14 @@
+body {
+    background-color: lightblue;
+    color: darkblue;
+    font-family: Verdana;
+}
+
+.headerImage {
+    background: url("../src/assets/doggos.webp") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 50vh;
+}
