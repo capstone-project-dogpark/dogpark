@@ -1,11 +1,12 @@
 import React, {useEffect} from "react";
 import {CommunityPost} from "./components/CommunityPost.jsx";
 import Card from "react-bootstrap/Card";
-import {CardImg} from "react-bootstrap";
+import {CardImg, Container} from "react-bootstrap";
 import {Comment} from "./components/Comment.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllPosts} from "../store/posts.js";
 import {FeedView} from "./components/FeedView";
+import {PostModal} from "./components/PostModal";
 
 
 
@@ -21,6 +22,10 @@ export function CommunityPage() {
     console.log(posts)
     return (
         <>
+            <Container className="mt-2 mb-5 text-center">
+                <PostModal/>
+            </Container>
+
             {posts.map(post => <FeedView post={post} key={post.postId}/>)}
 
         </>

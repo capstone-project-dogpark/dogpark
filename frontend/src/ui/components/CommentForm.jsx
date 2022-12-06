@@ -27,7 +27,7 @@ React.useEffect(()=>{dispatch(fetchAuth())},[dispatch])
     const auth = useSelector(state => state.auth)
 
     const submitComment = (values, {resetForm, setStatus}) => {
-        httpConfig.post("/apis/comment/", {values, commentPostId: postId, commentProfileId: auth.profileId})
+        httpConfig.post("/apis/comment/", {commentText: values.commentText, commentPostId: postId, commentProfileId: auth.profileId})
             .then(reply => {
                 let {message, type} = reply;
                 setStatus({message, type});
@@ -79,7 +79,7 @@ function CommentFormContent(props) {
                         </InputGroup.Text>
                         <FormControl
                             className="form-control"
-                            name="Comment"
+                            name="commentText"
                             type="text"
                             value={values.commentText}
                             placeholder="Comment"

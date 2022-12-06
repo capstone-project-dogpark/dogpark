@@ -16,8 +16,8 @@ import {CommentForm} from "./CommentForm";
 export function FeedView({post}) {
 
     const dispatch = useDispatch ()
-    const {postCaption, postImage} = post
-    console.log(postImage)
+    const {postCaption, postImageUrl} = post
+    console.log(post)
     const likes = useSelector(state => {
         if(state.likes[post.postId] === undefined){
             return[]
