@@ -22,9 +22,10 @@ export const fetchAllPosts = () => async (dispatch) => {
 
 
     for(let post of data){
-        const {postId} = post
+        const {postId, postProfileId} = post
         dispatch(fetchLikesByLikePostId(postId))
         dispatch(fetchCommentsByCommentPostId(postId))
+        dispatch(fetchProfileByProfileId(postProfileId))
     }
 };
 

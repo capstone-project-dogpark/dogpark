@@ -32,6 +32,13 @@ export function FeedView({post}) {
             return state.comments[post.postId]
         }
     })
+    const profile = useSelector(state => {
+        if(state.profiles[post.postProfileId] === undefined){
+            return[]
+        } else {
+            return state.profiles[post.postProfileId]
+        }
+    })
     console.log(comments)
     //
     // const profile = useSelector(state => {
@@ -61,6 +68,7 @@ export function FeedView({post}) {
             <Container>
                 <Row className="justify-content-center mt-3 mb-3">
             <Card style={{ width: '30rem' }}>
+                <p>{profile.profileAtHandle}</p>
                 <Card.Img variant="top" src={post.postImageUrl} alt={postCaption} />
                 <Card.Body>
                     <Button onClick={clickLike} size="sm">{likes.length}<FontAwesomeIcon icon="fa-heart" /></Button>
