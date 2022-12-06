@@ -1,7 +1,7 @@
 body {
     background-color: lightblue;
     color: darkblue;
-    font-family: Verdana;
+    font-family: sans-serif;
 }
 
 .headerImage {
@@ -12,3 +12,20 @@ body {
     background-size: cover;
     height: 50vh;
 }
+
+.img-thumbnail {
+
+    height: 112px;
+    width: 500px;
+    border-radius: 40px;
+    border: solid darkblue;
+}
+
+.quote {
+    font-style: italic;
+}
+
+.navLink {
+    color: darkblue;
+}
+
