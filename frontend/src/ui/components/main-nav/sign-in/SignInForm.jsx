@@ -42,6 +42,7 @@ export const SignInForm = () => {
                     resetForm();
                     let jwtToken = jwtDecode(reply.headers["authorization"])
                     dispatch(getAuth(jwtToken))
+                    // React useNavigate will go here to welcome page
                 }
                 setStatus({message, type});
             });
