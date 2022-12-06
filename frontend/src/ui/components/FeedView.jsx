@@ -65,15 +65,7 @@ export function FeedView({post}) {
                 <Card.Body>
                     <Button onClick={clickLike} size="sm">{likes.length}<FontAwesomeIcon icon="fa-heart" /></Button>
                     <Card.Text>{postCaption}</Card.Text>
-                    {/*Comment form insert here*/}
-                    <CommentForm/>
-                    <Form style={{ width: '20rem' }}>
-                        {/*<Form.Group className="mb-3">*/}
-                        {/*    <Form.Label></Form.Label>*/}
-                        {/*    <Form.Control type="comment" placeholder="Comment" />*/}
-                        {/*    <Button size="sm" className="mt-2" type="submit">Submit</Button>*/}
-                        {/*</Form.Group>*/}
-                    </Form>
+                    <CommentForm postId={post.postId}/>
                     {comments.map(comment => <Card.Text key = {comment.commentId}>{comment.commentText}</Card.Text>)}
                 </Card.Body>
 

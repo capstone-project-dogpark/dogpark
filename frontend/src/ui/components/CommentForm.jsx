@@ -1,17 +1,18 @@
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import * as Yup from "yup";
 import {httpConfig} from "../../utils/http-config.js";
 import jwtDecode from "jwt-decode";
-import {getAuth} from "../../store/auth.js";
+import {fetchAuth, getAuth} from "../../store/auth.js";
 import {Formik} from "formik";
 import {Button, Form, FormControl, InputGroup} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {DisplayError} from "./display-error/DisplayError.jsx";
 import {DisplayStatus} from "./display-error/DisplayStatus.jsx";
 import React from "react";
+import {fetchCommentsByCommentPostId} from "../../store/comments.js";
 
-export const CommentForm = () => {
-
+export const CommentForm = (props) => {
+const {postId}= props
     const dispatch = useDispatch()
 
     const validator = Yup.object().shape({
@@ -22,14 +23,17 @@ export const CommentForm = () => {
     const comment = {
         commentText: "",
     };
+React.useEffect(()=>{dispatch(fetchAuth())},[dispatch])
+    const auth = useSelector(state => state.auth)
 
     const submitComment = (values, {resetForm, setStatus}) => {
-        httpConfig.post("/apis/comment/", values)
+        httpConfig.post("/apis/comment/", {values, commentPostId: postId, commentProfileId: auth.profileId})
             .then(reply => {
                 let {message, type} = reply;
                 setStatus({message, type});
                 if(reply.status === 200 ) {
 
+                    dispatch(fetchCommentsByCommentPostId(postId))
                     resetForm();
                 }
                 setStatus({message, type});
