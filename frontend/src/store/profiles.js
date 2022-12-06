@@ -14,8 +14,9 @@ const slice = createSlice({
 export const {setProfile} = slice.actions
 
 export const fetchProfileByProfileId = (profileId) => async (dispatch, getState)=> {
+
     const state = getState()
-    state.profiles = undefined;
+
 
     const profiles = state.profiles
     console.log(profiles[profileId])

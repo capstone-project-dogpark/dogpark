@@ -29,3 +29,8 @@ body {
     color: darkblue;
 }
 
+.profileViewPhoto {
+    height: 200px;
+    width: 200px;
+}
+
