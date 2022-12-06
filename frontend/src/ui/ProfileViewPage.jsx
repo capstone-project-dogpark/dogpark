@@ -5,29 +5,27 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {FeedView} from "./components/FeedView";
 import Card from "react-bootstrap/Card";
 import {CommentForm} from "./components/CommentForm.jsx";
+import {useParams} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {IndividualPost} from "./components/IndividualPost";
 
 export function ProfileViewPage() {
+    const {profileId} = useParams()
+    const profile = useSelector(state=>state.profiles[profileId])
+    const posts = useSelector(state => state.posts.filter(post=>post.postProfileId===profileId))
+
     return(
         <>
 
 
             <Container className="text-center mt-5">
-                <h1>Zia & Kiwi</h1>
-                <Image fluid={true} className="profileViewPhoto rounded-circle" src={"../src/assets/ziakiwi.jpg"} alt={"User Default Image"} />
+                <h1>{profile.profileAtHandle}</h1>
+                <Image fluid={true} className="profileViewPhoto rounded-circle" src={profile.profileImage} alt={"User Default Image"} />
             </Container>
 
             <Container>
                 <Row className="justify-content-center mt-3 mb-3">
-                    <Card style={{ width: '30rem' }}>
-                        <Card.Img variant="top" src="../src/assets/dogs.jpg"/>
-                        <Card.Body>
-                            <Button><FontAwesomeIcon icon="fa-heart" /></Button>
-                            <Card.Text></Card.Text>
-                            <CommentForm/>
-                            <Card.Text> </Card.Text>
-                        </Card.Body>
-
-                    </Card>
+                    {posts.map(post=><IndividualPost key={post.postId} profile={profile} post={post}/>)}
                 </Row>
             </Container>
 
