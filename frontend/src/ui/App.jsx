@@ -37,7 +37,7 @@ export function App({store}) {
                     <Route path={"/SignUp"} element={<SignUp />} />
                     <Route path={"/Login"} element={<Login />} />
                     <Route path='MyFriendsPage' element={<MyFriendsPage />} />
-                    <Route path={'ProfileViewPage'} element={<ProfileViewPage />} />
+                    <Route path={'/ProfileViewPage/:profileId'} element={<ProfileViewPage />} />
                     <Route  path={"/WelcomePage"} element={<WelcomePage />} />
                     <Route  path={"/DogParks"} element={<DogParks />} />
                     <Route  path={"/CommunityPage"} element={<CommunityPage />} />
