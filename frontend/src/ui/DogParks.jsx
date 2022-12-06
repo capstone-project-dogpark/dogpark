@@ -19,21 +19,22 @@ console.log(parks);
 
     return (
         <>
-            <Container>
-                <Row className={"justify-content-center"}>
+            <Container className={'justify-content-center container-fluid'}>
+                <Row>
                     <Col>
                         <h1>Dog Parks</h1>
                         <Map
                             initialViewState={{
-                                latitude: 35.33,
-                                longitude: -106.65,
+                                latitude: 35.103,
+                                longitude: -106.627,
                                 zoom: 9
                             }}
                             mapboxAccessToken={'pk.eyJ1IjoiYWFyb241MDUiLCJhIjoiY2xhdWFyaGVwMDRlaTNvbXQzd2lodzhycCJ9._2gFOo1iNytw6oL1-15Veg'}
-                            style={{width: 900, height: 600}}
+                            style={{border: "10px solid green", display: "block", margin: "0 auto", width: "75vw", height: "75vh"}}
                             mapStyle="mapbox://styles/aaron505/claxli0jp001o15lnod4iujjh"
                         >
                             {parks.map((park, index) => <Pin lat={Number(park.parkLat)} name={park.parkName} address ={park.parkAddress} lng={Number(park.parkLng)} index={index} key={index}/>)}
+
                         </Map>
                     </Col>
                 </Row>
@@ -43,3 +44,4 @@ console.log(parks);
     )
 
 }
+

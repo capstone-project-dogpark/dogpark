@@ -5,10 +5,12 @@
     left: 0PX;
     TRANSFORM: translate(-50%, -100%);
     text-align: center;
-    width: 200px;
+    width: 100px;
 }
 
 
-.pinTop h3{
-    font-size: 18px;
+.pinTop h2{
+    font-size: 10px;
 }
+
+
