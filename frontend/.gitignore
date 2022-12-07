@@ -27,5 +27,5 @@ dist-ssr
 */frontend/setupProxy.js
 
 
-**/setupProxy.js
+setupProxy.js
 
