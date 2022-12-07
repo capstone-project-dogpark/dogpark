@@ -19,9 +19,9 @@ export async function getFollowsByFollowProfileId (request: Request, response: R
 
 export async function toggleFollowController (request: Request, response: Response): Promise<Response<string>> {
     try {
-        const {followerProfileId, followApproved} = request.body
+        const {followProfileId, followApproved} = request.body
         const profile = request.session.profile as Profile
-        const followProfileId = profile.profileId as string
+        const followerProfileId = profile.profileId as string
 
         const follow: Follow = {
             followApproved,
