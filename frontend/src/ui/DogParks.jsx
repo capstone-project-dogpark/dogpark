@@ -98,7 +98,7 @@ console.log(parks);
                     </Col>
                 </Row>
 
-                <Row className="row gx-lg-5 gy-5">
+                <Row className="d-flex justify-content-center">
                     <Col className="col-lg-3 text-center">
                         <img className=" mb-4 img-fluid " src="https://lh5.googleusercontent.com/p/AF1QipNDnzq0cFue0bnnG4hHIwZGr3gXRce6czId2OY=s1360-w1360-h1020" alt="park"/>
                         <h5 className="border rounded bg-light p-3"><a href="https://www.google.com/search?q=Roosevelt+dog+park&rlz=1C1VDKB_enUS963US963&sxsrf=ALiCzsaX4zT0-_k5vi8hPk0hvLRuE_4uCg%3A1670397866409&ei=qj-QY-_OGPrYytMPrYKZuAU&ved=0ahUKEwjvy9f7_Ob7AhV6rHIEHS1BBlcQ4dUDCBA&uact=5&oq=Roosevelt+dog+park&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzILCC4QgAQQxwEQrwEyBggAEBYQHjIGCAAQFhAeMgYIABAWEB4yBggAEBYQHjIGCAAQFhAeMgUIABCGAzIFCAAQhgMyBQgAEIYDMgUIABCGAzoKCAAQRxDWBBCwAzoNCAAQgAQQhwIQsQMQFDoICAAQgAQQsQM6BQgAEIAEOgoIABCxAxCDARBDOgsIABCABBCxAxDJAzoLCC4QgAQQsQMQgwE6BQguEIAEOgsILhCvARDHARCRAjoKCAAQgAQQhwIQFDoLCC4QxwEQrwEQkQJKBAhBGABKBAhGGABQ-AVY3hNgiBZoAXABeACAAYYBiAGnCJIBAzAuOZgBAKABAcgBCMABAQ&sclient=gws-wiz-serp">Roosevelt</a></h5>
