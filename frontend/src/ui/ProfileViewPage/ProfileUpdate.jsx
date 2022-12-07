@@ -6,9 +6,11 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {DisplayError} from "../components/display-error/DisplayError.jsx";
 import {DisplayStatus} from "../components/display-error/DisplayStatus.jsx";
 import {httpConfig} from "../../utils/http-config.js";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {fetchAllPosts} from "../../store/posts.js";
 import {useDropzone} from "react-dropzone";
+import {getAuth} from "../../store/auth.js";
+
 
 
 export const UpdateProfileForm = () => {
@@ -43,21 +45,22 @@ export const UpdateProfileForm = () => {
     //             }
     //         );
     // };
+    const dispatch = useDispatch()
     function HandleSubmit (values, {resetForm, setStatus}) {
         console.log(values)
         httpConfig.post(`/apis/image-upload`, values.profileImage)
-            .then(reply => {
+            .then(rep => {
 
-                if (reply.status === 200) {
-                    httpConfig.put(`/apis/profile/${profile.profileId}`, {...values, profileImage: reply.message})
+                if (rep.status === 200) {
+                    httpConfig.put(`/apis/profile/${profile.profileId}`, {...values, profileImage: rep.message})
                         .then(reply => {
-                            let {message, type} =reply
+                            let {mess, type} =reply
 
                             if (reply.status === 200) {
                                 resetForm()
-                                // dispatch(fetchAllPosts())
+                                dispatch(getAuth({...values, profileImage: rep.message}))
                             }
-                            setStatus({message, type})
+                            setStatus({mess, type})
                             return (reply)
                         })
                 }

@@ -6,6 +6,7 @@ import {PostModal} from "../components/PostModal.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAllPosts} from "../../store/posts.js";
 import {ProfileModal} from "./ProfileModal";
+import {fetchAuth} from "../../store/auth.js";
 
 
 export function WelcomePage () {
@@ -15,6 +16,7 @@ export function WelcomePage () {
 
     function initialEffects(){
         dispatch(fetchAllPosts())
+        dispatch(fetchAuth())
     }
 
     useEffect(initialEffects, [dispatch])
