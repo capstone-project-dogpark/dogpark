@@ -23,10 +23,13 @@ export function WelcomePage () {
     console.log(posts)
     return (
         <>
-            <Container className="text-center mt-5">
-                <h1>{profile.profileAtHandle}</h1>
-                <Image fluid={true} className={"rounded-circle"} src={profile.profileImage} alt={"place cage image"} />
-            </Container>
+            {profile &&
+                <Container className="text-center mt-5">
+                    <h1>{profile.profileAtHandle}</h1>
+                    <Image fluid={true} className={"rounded-circle"} src={profile.profileImage}
+                           alt={"place cage image"}/>
+                </Container>
+            }
             <Container className="mt-2 text-center mb-5">
                 <PostModal/>
                 <ProfileModal/>

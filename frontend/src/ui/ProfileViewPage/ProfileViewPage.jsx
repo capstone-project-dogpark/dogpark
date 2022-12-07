@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {CardImg, Col, Container, Image, Row} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -6,20 +6,41 @@ import {FeedView} from "../components/FeedView.jsx";
 import Card from "react-bootstrap/Card";
 import {CommentForm} from "../components/CommentForm.jsx";
 import {useParams} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {IndividualPost} from "../components/IndividualPost.jsx";
-import {ProfileModal} from "./ProfileModal";
+import follows, {fetchFollowsByFollowProfileId} from "../../store/follows.js";
+import {httpConfig} from "../../utils/http-config.js";
+import {fetchLikesByLikePostId} from "../../store/likes.js";
 
 export function ProfileViewPage() {
+    const dispatch= useDispatch()
+    const loggedInProfile=useSelector(state => state.auth ?? null)
     const {profileId} = useParams()
+    const follow= useSelector(state => state.follows[profileId]?.filter(follow=> follow.followerProfileId=== loggedInProfile.profileId)[0] ?? null)
     const profile = useSelector(state=>state.profiles[profileId])
     const posts = useSelector(state => state.posts.filter(post=>post.postProfileId===profileId))
+
+    const followOrUnfollow= loggedInProfile ? (follow ? 'unfollow' : 'follow') : 'Please login'
+console.log('profileId', profileId)
+    const effects=()=>{
+        dispatch(fetchFollowsByFollowProfileId(profileId))
+    }
+    useEffect(effects,[dispatch])
+
+    const clickFollow = () => {
+        httpConfig.post('/apis/follow/', {followProfileId: profileId, followerProfileId: loggedInProfile.profileId})
+            .then(reply =>{
+                if (reply.status === 200) {
+                    dispatch(fetchFollowsByFollowProfileId(profileId))
+                }
+            })
+    }
 
     return(
         <>
 
-
             <Container className="text-center mt-5">
+                <Button onClick={clickFollow} size="sm"> {followOrUnfollow} </Button>
                 <h1>{profile.profileAtHandle}</h1>
                 <Image fluid={true} className="profileViewPhoto rounded-circle" src={profile.profileImage} alt={"User Default Image"} />
             </Container>

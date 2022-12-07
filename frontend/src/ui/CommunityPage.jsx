@@ -23,6 +23,7 @@ export function CommunityPage() {
     return (
         <>
             <Container className="mt-2 mb-5 text-center">
+                <h1>Share your furry friends with our community!</h1>
                 <PostModal/>
             </Container>
 

@@ -24,15 +24,16 @@ export const SignUpForm = () => {
             .email("email must be a valid email")
             .required('email is required'),
         profileAtHandle: Yup.string()
-            .required("profile handle is required"),
+            .required("Profile name is required"),
         profileAboutPet: Yup.string()
-            .required("profile About pet is required"),
+            .required("About pet is required"),
         profilePassword: Yup.string()
             .required("Password is required")
             .min(8, "Password must be at least eight characters"),
         profilePasswordConfirm: Yup.string()
             .required("Password Confirm is required")
             .min(8, "Password must be at least eight characters"),
+        profileImage: Yup.mixed()
 
     });
 

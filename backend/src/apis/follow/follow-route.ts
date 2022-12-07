@@ -8,7 +8,7 @@ export const followRouter = Router ()
 
 followRouter.route('/')
     .post(isLoggedIn, toggleFollowController)
-followRouter.route('followProfileId/:followProfileId')
+followRouter.route('/followProfileId/:followProfileId')
     .get (asyncValidatorController([
         check('followProfileId', 'please provide a valid followerProfileId').isUUID()
     ]), getFollowsByFollowProfileId)
