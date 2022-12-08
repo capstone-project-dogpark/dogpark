@@ -18,6 +18,12 @@ services:
       - sql:/var/lib/postgresql/data/
     env_file:
       - ./project.env
+  app:
+    build: frontend
+    depends_on:
+      - node
+    ports:
+      - 8080:80
   node:
     build: backend
     env_file:
