@@ -47,7 +47,7 @@ export const UpdateProfileForm = () => {
     // };
     const dispatch = useDispatch()
     function HandleSubmit (values, {resetForm, setStatus}) {
-        console.log(values)
+
         httpConfig.post(`/apis/image-upload`, values.profileImage)
             .then(rep => {
 

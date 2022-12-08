@@ -41,7 +41,7 @@ async function ParksDataDownloader(data: any) : Promise<any> {
 
 ParksDataDownloader(data)
     .then(finished =>{
-        console.log("finished")
+
     }).catch(error => {
     console.error(error)
 })

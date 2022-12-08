@@ -21,7 +21,6 @@ export function ProfileViewPage() {
     const posts = useSelector(state => state.posts.filter(post=>post.postProfileId===profileId))
 
     const followOrUnfollow= loggedInProfile ? (follow ? 'unfollow' : 'follow') : 'Please login'
-console.log('profileId', profileId)
     const effects=()=>{
         dispatch(fetchFollowsByFollowProfileId(profileId))
     }

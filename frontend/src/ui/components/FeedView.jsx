@@ -19,7 +19,7 @@ export function FeedView({post}) {
 
     const dispatch = useDispatch ()
     // const {postCaption, postImageUrl} = post
-    console.log(post)
+
     // const likes = useSelector(state => {
     //     if(state.likes[post.postId] === undefined){
     //         return[]
@@ -41,7 +41,7 @@ export function FeedView({post}) {
             return state.profiles[post.postProfileId]
         }
     })
-    // console.log(comments)
+    //
     //
     // const profile = useSelector(state => {
     //     if (state.profile[post.postProfileId] === undefined){

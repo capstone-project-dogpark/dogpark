@@ -20,7 +20,6 @@ export function WelcomePage () {
     }
 
     useEffect(initialEffects, [dispatch])
-    console.log(posts)
     return (
         <>
             {profile &&

@@ -24,7 +24,7 @@ export function PostModal() {
     React.useEffect(()=>{dispatch(fetchAuth())}, [dispatch])
     const auth = useSelector(state => state.auth)
     function handleSubmit (values, {resetForm, setStatus}) {
-    console.log(values)
+
             httpConfig.post(`/apis/image-upload`, values.postImageUrl)
                 .then(reply => {
 

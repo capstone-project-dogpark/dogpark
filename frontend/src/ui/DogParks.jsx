@@ -14,7 +14,7 @@ export function DogParks () {
     }
     useEffect(effects, [dispatch])
 
-console.log(parks);
+;
 
 
     return (

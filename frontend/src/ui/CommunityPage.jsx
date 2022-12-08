@@ -19,7 +19,6 @@ export function CommunityPage() {
     }
 
     useEffect(initialEffects, [dispatch])
-    console.log(posts)
     return (
         <>
             <Container className="mt-2 mb-5 text-center">

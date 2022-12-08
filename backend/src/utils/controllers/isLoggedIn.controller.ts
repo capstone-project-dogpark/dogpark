@@ -8,7 +8,7 @@ export function isLoggedIn (request: Request, response: Response, next: NextFunc
     const status: Status = {status: 400, message: 'Please log in', data: null}
 
 const sessionProfile = (request: Request): Profile | undefined => request.session?.profile ?? undefined
-console.log(request.sessionID)
+
 
 const signature = (request: Request): string => request.session?.signature ?? 'no signature'
 

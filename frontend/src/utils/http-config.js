@@ -12,7 +12,7 @@ httpConfig.interceptors.response.use(function ({data, headers}) {
 
 }, function (error) {
     // Do something with response error
-    console.log(error);
+
     return Promise.reject(error);
 });
 
@@ -27,7 +27,7 @@ httpConfig.interceptors.request.use(
         return config
     }, (error) => {
         // Do something with response error
-        console.log(error);
+
         return Promise.reject(error);
     }
 )
