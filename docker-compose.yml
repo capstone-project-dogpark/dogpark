@@ -23,7 +23,7 @@ services:
     depends_on:
       - node
     ports:
-      - 8080:80
+      - 80:80
   node:
     build: backend
     env_file:
