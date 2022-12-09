@@ -1,0 +1,36 @@
+body {
+    background-color: lightblue;
+    color: darkblue;
+    font-family: sans-serif;
+}
+
+.headerImage {
+    background: url("../src/assets/doggos.webp") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 50vh;
+}
+
+.img-thumbnail {
+
+    height: 112px;
+    width: 450px;
+    border-radius: 40px;
+    border: solid darkblue;
+}
+
+.quote {
+    font-style: italic;
+}
+
+.navLink {
+    color: darkblue;
+}
+
+.profileViewPhoto {
+    height: 200px;
+    width: 200px;
+}
+
