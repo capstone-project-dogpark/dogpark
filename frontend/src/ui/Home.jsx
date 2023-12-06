@@ -5,13 +5,14 @@ import {Comment} from "./components/Comment.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {ProfileCard} from "./components/ProfileCard";
 import {FeedView} from "./components/FeedView.jsx";
+import dogLogo from "../assets/dogLogo2.jpg"
 import "./App.css"
 
 export function Home() {
     return (
         <>
             <div className="headerImage text-center">
-                <img className="img-thumbnail" src="../src/assets/dogLogo2.jpg" alt="dog logo"/>
+                <img className="img-thumbnail" src={dogLogo} alt="dog logo"/>
                         <h6 className="quote">Let's find a park for your best friend.</h6>
             </div>
             <Container fluid className="container-fluid py-3">

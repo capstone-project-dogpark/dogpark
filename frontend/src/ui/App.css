@@ -5,7 +5,7 @@ body {
 }
 
 .headerImage {
-    background: url("../src/assets/doggos.webp") no-repeat center center;
+    background: url("../assets/doggos.webp") no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
